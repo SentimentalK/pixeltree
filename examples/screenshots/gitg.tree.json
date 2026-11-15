@@ -1,0 +1,1378 @@
+{
+ "source": "ours",
+ "image_size": [
+  1920,
+  1080
+ ],
+ "elements": [
+  {
+   "id": "e1",
+   "role": "aria:button",
+   "name": "",
+   "box": [
+    12,
+    10,
+    34,
+    33
+   ],
+   "center": [
+    29,
+    26
+   ],
+   "conf": 0.8849
+  },
+  {
+   "id": "e2",
+   "role": "vax:visibleText",
+   "name": "demo-repo (~/Projects)",
+   "box": [
+    883,
+    12,
+    154,
+    15
+   ],
+   "center": [
+    960,
+    19
+   ],
+   "conf": 0.8668
+  },
+  {
+   "id": "e3",
+   "role": "aria:button",
+   "name": "Q",
+   "box": [
+    1633,
+    10,
+    34,
+    33
+   ],
+   "center": [
+    1650,
+    26
+   ],
+   "conf": 0.8973
+  },
+  {
+   "id": "e4",
+   "role": "aria:button",
+   "name": "=",
+   "box": [
+    1674,
+    10,
+    33,
+    33
+   ],
+   "center": [
+    1690,
+    26
+   ],
+   "conf": 0.8841
+  },
+  {
+   "id": "e5",
+   "role": "aria:button",
+   "name": "业",
+   "box": [
+    1708,
+    10,
+    33,
+    33
+   ],
+   "center": [
+    1724,
+    26
+   ],
+   "conf": 0.8693
+  },
+  {
+   "id": "e6",
+   "role": "aria:button",
+   "name": "0",
+   "box": [
+    1748,
+    10,
+    35,
+    34
+   ],
+   "center": [
+    1765,
+    27
+   ],
+   "conf": 0.8851
+  },
+  {
+   "id": "e7",
+   "role": "aria:button",
+   "name": "",
+   "box": [
+    1801,
+    15,
+    24,
+    24
+   ],
+   "center": [
+    1813,
+    27
+   ],
+   "conf": 0.8752
+  },
+  {
+   "id": "e8",
+   "role": "aria:button",
+   "name": "□",
+   "box": [
+    1841,
+    15,
+    23,
+    24
+   ],
+   "center": [
+    1852,
+    27
+   ],
+   "conf": 0.8651
+  },
+  {
+   "id": "e9",
+   "role": "aria:button",
+   "name": "×",
+   "box": [
+    1881,
+    15,
+    24,
+    24
+   ],
+   "center": [
+    1893,
+    27
+   ],
+   "conf": 0.8155
+  },
+  {
+   "id": "e10",
+   "role": "aria:listitem",
+   "name": "All commits",
+   "box": [
+    19,
+    57,
+    80,
+    18
+   ],
+   "center": [
+    59,
+    66
+   ],
+   "conf": 0.2697
+  },
+  {
+   "id": "e11",
+   "role": "vax:visibleText",
+   "name": "All commits",
+   "box": [
+    23,
+    58,
+    75,
+    16
+   ],
+   "center": [
+    60,
+    66
+   ],
+   "conf": 0.8487
+  },
+  {
+   "id": "e12",
+   "role": "aria:button",
+   "name": "",
+   "box": [
+    207,
+    54,
+    15,
+    19
+   ],
+   "center": [
+    214,
+    63
+   ],
+   "conf": 0.2786
+  },
+  {
+   "id": "e13",
+   "role": "aria:button",
+   "name": "main",
+   "box": [
+    224,
+    54,
+    37,
+    20
+   ],
+   "center": [
+    242,
+    64
+   ],
+   "conf": 0.6436
+  },
+  {
+   "id": "e14",
+   "role": "vax:visibleText",
+   "name": "Use util in main",
+   "box": [
+    266,
+    56,
+    97,
+    16
+   ],
+   "center": [
+    314,
+    64
+   ],
+   "conf": 0.803
+  },
+  {
+   "id": "e15",
+   "role": "aria:listitem",
+   "name": "man se tilin Test isern Test ier 82",
+   "box": [
+    193,
+    52,
+    1411,
+    25
+   ],
+   "center": [
+    898,
+    64
+   ],
+   "conf": 0.6637
+  },
+  {
+   "id": "e16",
+   "role": "aria:listitem",
+   "name": "Tetst ser Tetst ser 821da9daoc212ac a 1,1:00",
+   "box": [
+    613,
+    52,
+    1260,
+    24
+   ],
+   "center": [
+    1243,
+    64
+   ],
+   "conf": 0.465
+  },
+  {
+   "id": "e17",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1228,
+    56,
+    60,
+    15
+   ],
+   "center": [
+    1258,
+    63
+   ],
+   "conf": 0.7063
+  },
+  {
+   "id": "e18",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1408,
+    57,
+    60,
+    14
+   ],
+   "center": [
+    1438,
+    64
+   ],
+   "conf": 0.6992
+  },
+  {
+   "id": "e19",
+   "role": "aria:listitem",
+   "name": "Test User Test User 821da9da02cc223118a4c... Jan 5, 10:00",
+   "box": [
+    1218,
+    52,
+    633,
+    24
+   ],
+   "center": [
+    1534,
+    64
+   ],
+   "conf": 0.5476
+  },
+  {
+   "id": "e20",
+   "role": "vax:visibleText",
+   "name": "821da9da02cc223118a4c...",
+   "box": [
+    1589,
+    56,
+    171,
+    16
+   ],
+   "center": [
+    1674,
+    64
+   ],
+   "conf": 0.8359
+  },
+  {
+   "id": "e21",
+   "role": "vax:visibleText",
+   "name": "5, 10:00",
+   "box": [
+    1796,
+    57,
+    55,
+    15
+   ],
+   "center": [
+    1823,
+    64
+   ],
+   "conf": 0.7024
+  },
+  {
+   "id": "e22",
+   "role": "aria:listitem",
+   "name": "Branches",
+   "box": [
+    15,
+    84,
+    86,
+    18
+   ],
+   "center": [
+    58,
+    93
+   ],
+   "conf": 0.8589
+  },
+  {
+   "id": "e23",
+   "role": "vax:visibleText",
+   "name": "Branches",
+   "box": [
+    34,
+    85,
+    65,
+    16
+   ],
+   "center": [
+    66,
+    93
+   ],
+   "conf": 0.8528
+  },
+  {
+   "id": "e24",
+   "role": "aria:listitem",
+   "name": "Document usage",
+   "box": [
+    220,
+    80,
+    113,
+    19
+   ],
+   "center": [
+    276,
+    89
+   ],
+   "conf": 0.405
+  },
+  {
+   "id": "e25",
+   "role": "vax:visibleText",
+   "name": "Document usage",
+   "box": [
+    225,
+    82,
+    107,
+    15
+   ],
+   "center": [
+    278,
+    89
+   ],
+   "conf": 0.8723
+  },
+  {
+   "id": "e26",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1227,
+    82,
+    62,
+    15
+   ],
+   "center": [
+    1258,
+    89
+   ],
+   "conf": 0.8668
+  },
+  {
+   "id": "e27",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1407,
+    82,
+    62,
+    15
+   ],
+   "center": [
+    1438,
+    89
+   ],
+   "conf": 0.8646
+  },
+  {
+   "id": "e28",
+   "role": "vax:visibleText",
+   "name": "27a64fb8f8e5697797004...",
+   "box": [
+    1588,
+    81,
+    174,
+    16
+   ],
+   "center": [
+    1675,
+    89
+   ],
+   "conf": 0.8643
+  },
+  {
+   "id": "e29",
+   "role": "vax:visibleText",
+   "name": "Jan 4, 10:00",
+   "box": [
+    1767,
+    82,
+    84,
+    15
+   ],
+   "center": [
+    1809,
+    89
+   ],
+   "conf": 0.8261
+  },
+  {
+   "id": "e30",
+   "role": "aria:button",
+   "name": "✓ main",
+   "box": [
+    35,
+    113,
+    54,
+    16
+   ],
+   "center": [
+    62,
+    121
+   ],
+   "conf": 0.3071
+  },
+  {
+   "id": "e31",
+   "role": "aria:listitem",
+   "name": "✓ main",
+   "box": [
+    35,
+    113,
+    59,
+    17
+   ],
+   "center": [
+    64,
+    121
+   ],
+   "conf": 0.3184
+  },
+  {
+   "id": "e32",
+   "role": "vax:visibleText",
+   "name": "main",
+   "box": [
+    58,
+    114,
+    34,
+    14
+   ],
+   "center": [
+    75,
+    121
+   ],
+   "conf": 0.8232
+  },
+  {
+   "id": "e33",
+   "role": "aria:listitem",
+   "name": "main",
+   "box": [
+    21,
+    107,
+    185,
+    28
+   ],
+   "center": [
+    113,
+    121
+   ],
+   "conf": 0.8061
+  },
+  {
+   "id": "e34",
+   "role": "aria:listitem",
+   "name": "Add util module",
+   "box": [
+    223,
+    105,
+    102,
+    19
+   ],
+   "center": [
+    274,
+    114
+   ],
+   "conf": 0.5414
+  },
+  {
+   "id": "e35",
+   "role": "vax:visibleText",
+   "name": "Add util module",
+   "box": [
+    225,
+    107,
+    100,
+    15
+   ],
+   "center": [
+    275,
+    114
+   ],
+   "conf": 0.8712
+  },
+  {
+   "id": "e36",
+   "role": "aria:listitem",
+   "name": "Tes. a Tes. a 53ea2d63906.c0. .9.,0:0",
+   "box": [
+    408,
+    105,
+    1436,
+    20
+   ],
+   "center": [
+    1126,
+    115
+   ],
+   "conf": 0.5231
+  },
+  {
+   "id": "e37",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1228,
+    107,
+    60,
+    15
+   ],
+   "center": [
+    1258,
+    114
+   ],
+   "conf": 0.8754
+  },
+  {
+   "id": "e38",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1407,
+    107,
+    61,
+    15
+   ],
+   "center": [
+    1437,
+    114
+   ],
+   "conf": 0.8715
+  },
+  {
+   "id": "e39",
+   "role": "aria:listitem",
+   "name": "Test UserTest Userc53ea2cd3bf3909b9c078... Jan 3, 10:00",
+   "box": [
+    1224,
+    103,
+    627,
+    22
+   ],
+   "center": [
+    1537,
+    114
+   ],
+   "conf": 0.8094
+  },
+  {
+   "id": "e40",
+   "role": "vax:visibleText",
+   "name": "c53ea2cd3bf3909b9c078...",
+   "box": [
+    1589,
+    106,
+    167,
+    16
+   ],
+   "center": [
+    1672,
+    114
+   ],
+   "conf": 0.8533
+  },
+  {
+   "id": "e41",
+   "role": "vax:visibleText",
+   "name": "Jan 3, 10:00",
+   "box": [
+    1766,
+    107,
+    84,
+    15
+   ],
+   "center": [
+    1808,
+    114
+   ],
+   "conf": 0.8378
+  },
+  {
+   "id": "e42",
+   "role": "vax:visibleText",
+   "name": "Add main script",
+   "box": [
+    225,
+    131,
+    98,
+    16
+   ],
+   "center": [
+    274,
+    139
+   ],
+   "conf": 0.8855
+  },
+  {
+   "id": "e43",
+   "role": "aria:listitem",
+   "name": "Add main script",
+   "box": [
+    223,
+    130,
+    102,
+    18
+   ],
+   "center": [
+    274,
+    139
+   ],
+   "conf": 0.5112
+  },
+  {
+   "id": "e44",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1227,
+    132,
+    61,
+    14
+   ],
+   "center": [
+    1257,
+    139
+   ],
+   "conf": 0.8855
+  },
+  {
+   "id": "e45",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1407,
+    132,
+    61,
+    14
+   ],
+   "center": [
+    1437,
+    139
+   ],
+   "conf": 0.8804
+  },
+  {
+   "id": "e46",
+   "role": "aria:listitem",
+   "name": "Test UserTest User11490933306d00a8d9b6... Jan 2, 10:00",
+   "box": [
+    1195,
+    128,
+    653,
+    21
+   ],
+   "center": [
+    1521,
+    138
+   ],
+   "conf": 0.4761
+  },
+  {
+   "id": "e47",
+   "role": "vax:visibleText",
+   "name": "11490933306d00a8d9b6...",
+   "box": [
+    1589,
+    131,
+    167,
+    15
+   ],
+   "center": [
+    1672,
+    138
+   ],
+   "conf": 0.8466
+  },
+  {
+   "id": "e48",
+   "role": "vax:visibleText",
+   "name": "Jan 2, 10:00",
+   "box": [
+    1767,
+    131,
+    83,
+    16
+   ],
+   "center": [
+    1808,
+    139
+   ],
+   "conf": 0.8413
+  },
+  {
+   "id": "e49",
+   "role": "aria:listitem",
+   "name": "Remotes",
+   "box": [
+    13,
+    139,
+    85,
+    18
+   ],
+   "center": [
+    55,
+    148
+   ],
+   "conf": 0.8256
+  },
+  {
+   "id": "e50",
+   "role": "vax:visibleText",
+   "name": "Remotes",
+   "box": [
+    34,
+    141,
+    61,
+    15
+   ],
+   "center": [
+    64,
+    148
+   ],
+   "conf": 0.8659
+  },
+  {
+   "id": "e51",
+   "role": "aria:listitem",
+   "name": "Add readme",
+   "box": [
+    222,
+    155,
+    82,
+    17
+   ],
+   "center": [
+    263,
+    163
+   ],
+   "conf": 0.44
+  },
+  {
+   "id": "e52",
+   "role": "vax:visibleText",
+   "name": "Add readme",
+   "box": [
+    225,
+    156,
+    78,
+    15
+   ],
+   "center": [
+    264,
+    163
+   ],
+   "conf": 0.8779
+  },
+  {
+   "id": "e53",
+   "role": "aria:listitem",
+   "name": "Test. 9697Test. 9697Tea67c8175918569f jn",
+   "box": [
+    360,
+    154,
+    1437,
+    21
+   ],
+   "center": [
+    1078,
+    164
+   ],
+   "conf": 0.4709
+  },
+  {
+   "id": "e54",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1228,
+    157,
+    60,
+    15
+   ],
+   "center": [
+    1258,
+    164
+   ],
+   "conf": 0.879
+  },
+  {
+   "id": "e55",
+   "role": "vax:visibleText",
+   "name": "Test User",
+   "box": [
+    1408,
+    156,
+    60,
+    16
+   ],
+   "center": [
+    1438,
+    164
+   ],
+   "conf": 0.8717
+  },
+  {
+   "id": "e56",
+   "role": "aria:listitem",
+   "name": "Test UserTest Userfa67c8175df9183bb9076... Jan 1, 10:00",
+   "box": [
+    1224,
+    152,
+    625,
+    23
+   ],
+   "center": [
+    1536,
+    163
+   ],
+   "conf": 0.8149
+  },
+  {
+   "id": "e57",
+   "role": "vax:visibleText",
+   "name": "fa67c8175df9183bb9076...",
+   "box": [
+    1589,
+    155,
+    169,
+    17
+   ],
+   "center": [
+    1673,
+    163
+   ],
+   "conf": 0.8396
+  },
+  {
+   "id": "e58",
+   "role": "vax:visibleText",
+   "name": "Jan 1, 10:00",
+   "box": [
+    1767,
+    156,
+    83,
+    16
+   ],
+   "center": [
+    1808,
+    164
+   ],
+   "conf": 0.8463
+  },
+  {
+   "id": "e59",
+   "role": "aria:listitem",
+   "name": "> Tags",
+   "box": [
+    14,
+    165,
+    54,
+    19
+   ],
+   "center": [
+    41,
+    174
+   ],
+   "conf": 0.8267
+  },
+  {
+   "id": "e60",
+   "role": "vax:visibleText",
+   "name": "Tags",
+   "box": [
+    33,
+    167,
+    33,
+    15
+   ],
+   "center": [
+    49,
+    174
+   ],
+   "conf": 0.8395
+  },
+  {
+   "id": "e61",
+   "role": "vax:visibleText",
+   "name": "Test User <",
+   "box": [
+    272,
+    516,
+    69,
+    16
+   ],
+   "center": [
+    306,
+    524
+   ],
+   "conf": 0.84
+  },
+  {
+   "id": "e62",
+   "role": "aria:link",
+   "name": "<test@example.com>",
+   "box": [
+    339,
+    515,
+    129,
+    19
+   ],
+   "center": [
+    403,
+    524
+   ],
+   "conf": 0.7499
+  },
+  {
+   "id": "e63",
+   "role": "vax:visibleText",
+   "name": "<test@example.com>",
+   "box": [
+    340,
+    516,
+    129,
+    18
+   ],
+   "center": [
+    404,
+    525
+   ],
+   "conf": 0.2579
+  },
+  {
+   "id": "e64",
+   "role": "aria:radio",
+   "name": "O",
+   "box": [
+    229,
+    531,
+    28,
+    26
+   ],
+   "center": [
+    243,
+    544
+   ],
+   "conf": 0.6809
+  },
+  {
+   "id": "e65",
+   "role": "vax:visibleText",
+   "name": "2026-01-05T10:00+0000",
+   "box": [
+    272,
+    536,
+    123,
+    15
+   ],
+   "center": [
+    333,
+    543
+   ],
+   "conf": 0.8216
+  },
+  {
+   "id": "e66",
+   "role": "aria:checkbox",
+   "name": "",
+   "box": [
+    221,
+    564,
+    46,
+    20
+   ],
+   "center": [
+    244,
+    574
+   ],
+   "conf": 0.5689
+  },
+  {
+   "id": "e67",
+   "role": "vax:visibleText",
+   "name": "Use util in main",
+   "box": [
+    216,
+    610,
+    97,
+    16
+   ],
+   "center": [
+    264,
+    618
+   ],
+   "conf": 0.8258
+  },
+  {
+   "id": "e68",
+   "role": "vax:visibleText",
+   "name": "821da9da02cc223118a4c799809715ef976c7c0a",
+   "box": [
+    1597,
+    641,
+    305,
+    16
+   ],
+   "center": [
+    1749,
+    649
+   ],
+   "conf": 0.8302
+  },
+  {
+   "id": "e69",
+   "role": "aria:button",
+   "name": "V",
+   "box": [
+    209,
+    673,
+    15,
+    14
+   ],
+   "center": [
+    216,
+    680
+   ],
+   "conf": 0.609
+  },
+  {
+   "id": "e70",
+   "role": "aria:combobox",
+   "name": "3",
+   "box": [
+    228,
+    672,
+    72,
+    18
+   ],
+   "center": [
+    264,
+    681
+   ],
+   "conf": 0.3007
+  },
+  {
+   "id": "e71",
+   "role": "vax:visibleText",
+   "name": "src/main.py",
+   "box": [
+    310,
+    674,
+    75,
+    15
+   ],
+   "center": [
+    347,
+    681
+   ],
+   "conf": 0.813
+  },
+  {
+   "id": "e72",
+   "role": "aria:tab",
+   "name": "Unif",
+   "box": [
+    1672,
+    665,
+    122,
+    32
+   ],
+   "center": [
+    1733,
+    681
+   ],
+   "conf": 0.8001
+  },
+  {
+   "id": "e73",
+   "role": "aria:button",
+   "name": "Unif",
+   "box": [
+    1672,
+    665,
+    122,
+    32
+   ],
+   "center": [
+    1733,
+    681
+   ],
+   "conf": 0.3991
+  },
+  {
+   "id": "e74",
+   "role": "aria:tab",
+   "name": "Split",
+   "box": [
+    1793,
+    665,
+    120,
+    32
+   ],
+   "center": [
+    1853,
+    681
+   ],
+   "conf": 0.6478
+  },
+  {
+   "id": "e75",
+   "role": "aria:button",
+   "name": "",
+   "box": [
+    214,
+    705,
+    25,
+    15
+   ],
+   "center": [
+    226,
+    712
+   ],
+   "conf": 0.5834
+  },
+  {
+   "id": "e76",
+   "role": "aria:button",
+   "name": ".",
+   "box": [
+    253,
+    706,
+    25,
+    13
+   ],
+   "center": [
+    265,
+    712
+   ],
+   "conf": 0.465
+  },
+  {
+   "id": "e77",
+   "role": "vax:visibleText",
+   "name": "@@ -1,1 +1,2 @@",
+   "box": [
+    308,
+    701,
+    126,
+    16
+   ],
+   "center": [
+    371,
+    709
+   ],
+   "conf": 0.8355
+  },
+  {
+   "id": "e78",
+   "role": "vax:visibleText",
+   "name": "print('hello')",
+   "box": [
+    307,
+    720,
+    129,
+    18
+   ],
+   "center": [
+    371,
+    729
+   ],
+   "conf": 0.8189
+  },
+  {
+   "id": "e79",
+   "role": "vax:visibleText",
+   "name": "1",
+   "box": [
+    269,
+    742,
+    11,
+    14
+   ],
+   "center": [
+    274,
+    749
+   ],
+   "conf": 0.4586
+  },
+  {
+   "id": "e80",
+   "role": "vax:visibleText",
+   "name": "from util import add",
+   "box": [
+    310,
+    740,
+    164,
+    18
+   ],
+   "center": [
+    392,
+    749
+   ],
+   "conf": 0.8398
+  },
+  {
+   "id": "e81",
+   "role": "vax:visibleText",
+   "name": "2",
+   "box": [
+    269,
+    762,
+    11,
+    14
+   ],
+   "center": [
+    274,
+    769
+   ],
+   "conf": 0.6003
+  },
+  {
+   "id": "e82",
+   "role": "vax:visibleText",
+   "name": "print(add(1, 2)】",
+   "box": [
+    308,
+    760,
+    135,
+    18
+   ],
+   "center": [
+    375,
+    769
+   ],
+   "conf": 0.8583
+  },
+  {
+   "id": "e83",
+   "role": "aria:textbox",
+   "name": "1 +1,2 @@ 'hello'D\ntil import add\nadd(1, 2)",
+   "box": [
+    361,
+    706,
+    1437,
+    374
+   ],
+   "center": [
+    1079,
+    893
+   ],
+   "conf": 0.3684
+  },
+  {
+   "id": "e84",
+   "role": "aria:button",
+   "name": "±±",
+   "box": [
+    71,
+    1036,
+    33,
+    33
+   ],
+   "center": [
+    87,
+    1052
+   ],
+   "conf": 0.7919
+  },
+  {
+   "id": "e85",
+   "role": "aria:button",
+   "name": "口",
+   "box": [
+    104,
+    1036,
+    33,
+    33
+   ],
+   "center": [
+    120,
+    1052
+   ],
+   "conf": 0.8535
+  }
+ ],
+ "timings": {
+  "detect_s": 0.4508,
+  "ocr_s": 4.0867,
+  "tree_s": 0.0006,
+  "decode_s": 0.0237,
+  "load_s": 9.6976,
+  "total_s": 4.5618,
+  "model_s": 4.5381
+ }
+}
