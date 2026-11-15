@@ -5,7 +5,7 @@
 #
 # Tools (user-level binaries, no sudo): pandoc >= 3.1 and tectonic >= 0.15, found on PATH or given as
 #   PANDOC=/path/to/pandoc TECTONIC=/path/to/tectonic paper/build.sh
-# Author line: PAPER_AUTHOR="Name (Affiliation)"; default = the GitHub owner of the 'origin' remote.
+# Author line: PAPER_AUTHOR="Name (Affiliation)"; default "Xinghan Xu".
 # Without tectonic the script stops after writing pixeltree.tex (compile it on Overleaf with XeLaTeX, see
 # paper/SUBMISSION_NOTES.md). After compiling, paper/check.py checks page count, overfull boxes and numbers.
 set -euo pipefail
@@ -18,11 +18,7 @@ PYTHON="${PYTHON:-python3}"
 mkdir -p "$OUT"
 OUT="$(cd "$OUT" && pwd)"
 
-if [ -z "${PAPER_AUTHOR:-}" ]; then
-  origin="$(git -C "$REPO" remote get-url origin 2>/dev/null || true)"
-  PAPER_AUTHOR="$(printf '%s' "$origin" | sed -n 's#.*github\.com[:/]\([^/]*\)/.*#\1#p')"
-  PAPER_AUTHOR="${PAPER_AUTHOR:-Author}"
-fi
+PAPER_AUTHOR="${PAPER_AUTHOR:-Xinghan Xu}"
 
 "$PANDOC" "$REPO/PAPER.md" \
   --from markdown+lists_without_preceding_blankline-auto_identifiers-implicit_figures \

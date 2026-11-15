@@ -20,8 +20,8 @@ PANDOC=<pandoc 路径> TECTONIC=<tectonic 路径> paper/build.sh <输出目录> 
 - PAPER.md 更新后（例如 R5 一节的数字）重跑一次即可，不手改 .tex。
 
 **作者署名与单位。**
-- 默认作者是 GitHub 仓库所有者的名字（取自 git remote）。
-- 改成正式署名：`PAPER_AUTHOR="姓名（单位）" paper/build.sh`。
+- 默认作者是 Xinghan Xu（对外署名；GitHub 账号名只出现在仓库 URL 里）。
+- 加单位或改署名：`PAPER_AUTHOR="Xinghan Xu（单位）" paper/build.sh`。
 - 单位、通讯邮箱、致谢都由你决定，脚本不替你填。
 
 **排版引擎。**
@@ -51,7 +51,8 @@ PANDOC=<pandoc 路径> TECTONIC=<tectonic 路径> paper/build.sh <输出目录> 
 6. **公开顺序。**
    - 论文里的链接都指向 GitHub 仓库；仓库还是 private 时，读者点进去是 404。
    - 建议先把 GitHub 仓库改为 public，再投 arXiv。
-7. **日期相关的事实。**
+7. **提交记录里的身份。** git 提交记录显示的提交者名字 / 邮箱是本机 git 配置，与署名 Xinghan Xu 不同。是否改写由你决定；仓库公开前可以改写（公开后改写会影响已有克隆）。
+8. **日期相关的事实。**
    - 论文写明日历任务假定在 2026-11-08 到 2026-11-14 那一周运行。
    - R5 只跑了 27 / 48 个任务。如果之后补完，请先更新 PAPER.md 再重建 PDF。
 

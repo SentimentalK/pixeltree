@@ -93,3 +93,15 @@ Research prototype, released to show the idea and its limits — not a maintaine
 ## Licence
 
 AGPL-3.0 ([LICENSE](LICENSE)). The detector is a derivative of Ultralytics YOLO11 (AGPL-3.0). Third-party notices are in [NOTICE](NOTICE), data terms in [DATA.md](DATA.md).
+
+## How to cite
+
+```bibtex
+@misc{xu2026pixeltree,
+  author       = {Xinghan Xu},
+  title        = {pixeltree: distilling "look at the screen" into a small local model --- what worked, what did not},
+  year         = {2026},
+  howpublished = {\url{https://github.com/SentimentalK/pixeltree}},
+  note         = {arXiv: to be added}
+}
+```
