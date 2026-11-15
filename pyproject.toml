@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pixeltree"
+version = "0.1.0"
+description = "Screenshot -> element tree for GUI agents, a Linux desktop agent testbench, and an offline replay viewer"
+readme = "README.md"
+license = {text = "AGPL-3.0-only"}
+requires-python = ">=3.11"
+dependencies = ["Pillow>=10", "numpy>=1.26"]
+
+[project.optional-dependencies]
+# `perceive` is pinned to the versions the published numbers were produced with. torch is not pinned: install CPU
+# wheels first (pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu), see README.
+perceive = [
+    "ultralytics==8.4.182",
+    "rapidocr==3.10.0",
+    "onnx==1.23.2",
+    "onnxruntime==1.31.0",
+    "opencv-python-headless==5.0.0.93",
+]
+bench = [
+    "mcp==2.3.0",
+    "pypdf==5.1.0",
+    "python-xlib==0.33",
+    "mss==10.2.0",
+    "opencv-python-headless==5.0.0.93",
+]
+dev = ["pytest", "playwright"]
+
+[project.scripts]
+pixeltree-tree = "pixeltree.perceive.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["pixeltree*"]
+
+[tool.setuptools.package-data]
+"pixeltree.viewer" = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "bench/tests"]
+pythonpath = ["."]

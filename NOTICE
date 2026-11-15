@@ -1,0 +1,26 @@
+pixeltree
+Copyright (C) 2026 SentimentalK (github.com/SentimentalK/pixeltree)
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero
+General Public License version 3 as published by the Free Software Foundation (see LICENSE).
+
+Why AGPL-3.0: the detector is a fine-tune of Ultralytics YOLO11, and the code that trains and runs it uses
+the Ultralytics library; both are distributed by Ultralytics under AGPL-3.0. The released weights
+(pixeltree-detector-v1.pt) are a derivative of YOLO11 and are distributed under the same licence.
+
+Third-party components and data (not all are included in this repository):
+
+- Ultralytics YOLO11 / ultralytics Python package — AGPL-3.0 — https://github.com/ultralytics/ultralytics
+  Used as the detector architecture, initial weights lineage, training and inference library.
+- RapidOCR (rapidocr) and the PP-OCRv6 detection / recognition ONNX models it ships — Apache-2.0 —
+  https://github.com/RapidAI/RapidOCR , https://github.com/PaddlePaddle/PaddleOCR
+  Used for element names (OCR). Installed as a dependency, not vendored.
+- GroundCUA dataset (ServiceNow) — MIT — https://huggingface.co/datasets/ServiceNow/GroundCUA
+  A subset of its screenshots was relabelled by us and used for training. No images are included here.
+- OmniParser v2 (Microsoft) — used only as a baseline in the agent exam and the detector exam. No code or
+  weights of OmniParser are included; see upstream for its licences — https://github.com/microsoft/OmniParser
+- Screen2AX — part of an evaluation-only gold set; nothing included — arXiv:2507.16704
+- Applications under test (Drawing, gitg, KeePassXC, Lutris, Obsidian, Okular, GNOME Calendar,
+  GNOME Contacts) — each under its own licence; not included. Example screenshots in examples/ show
+  their user interfaces with synthetic data only.
+- Model-generated labels: produced with Anthropic Claude models (Opus for labelling, Sonnet for QA).
