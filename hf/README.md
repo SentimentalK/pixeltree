@@ -2,6 +2,13 @@
 license: agpl-3.0
 library_name: ultralytics
 pipeline_tag: object-detection
+language: en
+base_model: Ultralytics/YOLO11
+base_model_relation: finetune
+datasets:
+  - ServiceNow/GroundCUA
+metrics:
+  - f1
 tags:
   - yolo11
   - ultralytics
@@ -11,6 +18,51 @@ tags:
   - gui-agent
   - accessibility
   - screenshot
+model-index:
+- name: pixeltree-detector-v1
+  results:
+  - task:
+      type: object-detection
+    dataset:
+      name: "pixeltree held-out Linux apps (258 images)"
+      type: pixeltree-heldout-linux-apps
+    metrics:
+    - type: f1
+      value: 0.854
+      name: "class-agnostic F1 @0.25, IoU 0.5"
+    - type: f1
+      value: 0.874
+      name: "class-agnostic F1 @0.45, IoU 0.5"
+    - type: f1
+      value: 0.798
+      name: "strict (role must match) F1 @0.25, IoU 0.5"
+  - task:
+      type: object-detection
+    dataset:
+      name: "pixeltree held-out websites (45 images)"
+      type: pixeltree-heldout-websites
+    metrics:
+    - type: f1
+      value: 0.787
+      name: "class-agnostic F1 @0.25, IoU 0.5"
+    - type: f1
+      value: 0.813
+      name: "class-agnostic F1 @0.45, IoU 0.5"
+  - task:
+      type: object-detection
+    dataset:
+      name: "pixeltree gold set (Linux 72 + macOS 114 images)"
+      type: pixeltree-gold-set
+    metrics:
+    - type: f1
+      value: 0.815
+      name: "class-agnostic F1 @0.25, IoU 0.5"
+    - type: f1
+      value: 0.826
+      name: "class-agnostic F1 @0.45, IoU 0.5"
+    - type: f1
+      value: 0.737
+      name: "strict (role must match) F1 @0.25, IoU 0.5"
 ---
 
 # pixeltree-detector-v1
@@ -18,6 +70,31 @@ tags:
 A 19 MB YOLO11s detector that finds every visible UI element in a desktop or web screenshot and gives it one of 16 roles. Together with OCR (in the [pixeltree](https://github.com/SentimentalK/pixeltree) code) it turns a screenshot into a text list of elements — "the tree" — that a GUI agent can read.
 
 It is a research release. The accompanying [short paper](https://github.com/SentimentalK/pixeltree/blob/main/PAPER.md) explains which agents benefited from the tree and which did not.
+
+## Example
+
+![A sandbox git-client window with 85 detected boxes coloured by role](assets/example_gitg.png)
+
+*Detector output on a sandbox screenshot (a git client showing a demo repository with synthetic data; 1920×1080, shown scaled), boxes coloured by role.*
+
+The first 12 lines of the tree that the detector and OCR produce for this screenshot (85 elements in all):
+
+```
+screen 1920x1080, 85 elements
+aria:button [e1] "" @(12,10,34,33) c=(29,26)
+vax:visibleText [e2] "demo-repo (~/Projects)" @(883,12,154,15) c=(960,19)
+aria:button [e3] "Q" @(1633,10,34,33) c=(1650,26)
+aria:button [e4] "=" @(1674,10,33,33) c=(1690,26)
+aria:button [e5] "业" @(1708,10,33,33) c=(1724,26)
+aria:button [e6] "0" @(1748,10,35,34) c=(1765,27)
+aria:button [e7] "" @(1801,15,24,24) c=(1813,27)
+aria:button [e8] "□" @(1841,15,23,24) c=(1852,27)
+aria:button [e9] "×" @(1881,15,24,24) c=(1893,27)
+aria:listitem [e10] "All commits" @(19,57,80,18) c=(59,66)
+vax:visibleText [e11] "All commits" @(23,58,75,16) c=(60,66)
+```
+
+*Visible flaws: e1 and e7 are icon-only buttons, so their names are empty; OCR read the search, list-view, download and menu icons as `"Q"`, `"="`, `"业"` and `"0"`; and one row appears twice, as a list item and as the text inside it (e10 and e11).*
 
 ## Roles (classes)
 
@@ -113,5 +190,19 @@ AGPL-3.0. The model is a fine-tune of Ultralytics YOLO11 (AGPL-3.0), and the cod
 ## Links
 
 - Code, testbench, replay viewer, result tables: https://github.com/SentimentalK/pixeltree
-- Short paper: [PAPER.md](https://github.com/SentimentalK/pixeltree/blob/main/PAPER.md)
+- Short paper: [PAPER.md](https://github.com/SentimentalK/pixeltree/blob/main/PAPER.md), or as a PDF: [pixeltree-paper-v1.pdf](https://github.com/SentimentalK/pixeltree/releases/download/v0.1.0/pixeltree-paper-v1.pdf)
 - Model card in the repository: [weights/MODEL_CARD.md](https://github.com/SentimentalK/pixeltree/blob/main/weights/MODEL_CARD.md)
+
+## Citation
+
+```bibtex
+@misc{xu2026pixeltree,
+  author       = {Xinghan Xu},
+  title        = {pixeltree: distilling "look at the screen" into a small local model --- what worked, what did not},
+  year         = {2026},
+  howpublished = {\url{https://github.com/SentimentalK/pixeltree}},
+  note         = {no arXiv identifier yet}
+}
+```
+
+There is no arXiv identifier yet; the BibTeX entry will be updated when there is one.

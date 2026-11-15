@@ -10,6 +10,8 @@ aria:button [e7] "Save" @(1119,7,43,22) c=(1140,18)
 
 We then measured, on 48 programmatically graded tasks in 8 unseen Linux apps, which agents actually benefit from such a tree. This repository is a research release: the code, the weights, the testbench, example episodes and every result table, so that others can continue. The full write-up is **[PAPER.md](PAPER.md)** (中文：[PAPER.zh.md](PAPER.zh.md)).
 
+PDF of the paper: [pixeltree-paper-v1.pdf](https://github.com/SentimentalK/pixeltree/releases/download/v0.1.0/pixeltree-paper-v1.pdf).
+
 ## Findings in one page
 
 - **The detector.** YOLO11s fine-tuned on 2,782 screenshots labelled by Claude Opus (about $0.32 per image, API-equivalent). On 10 Linux apps never seen in training it finds elements at class-agnostic F1 **0.854**. Two independent model labellers agree at 0.955, so there is headroom ([results/D1](results/D1_detector.md), [D2](results/D2_detector_side.md)).

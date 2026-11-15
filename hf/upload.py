@@ -10,7 +10,7 @@ What it does:
 3. creates the model repository if needed, **private by default** (`--public` only for a new repository; an existing
    repository keeps its visibility);
 4. uploads, in one commit: README.md (hf/README.md with the repository id filled in), the weight file,
-   SHA256SUMS and LICENSE.
+   SHA256SUMS, LICENSE and every file under hf/assets/ (the images the model card shows) as assets/<name>.
 
 `--dry-run` does steps 1 and 4's file list only: no network, no login needed.
 The token is never read into, printed by, or written to any file by this script; huggingface_hub reads it itself.
@@ -47,14 +47,17 @@ def model_card(repo_id):
     return text.replace("{{REPO_ID}}", repo_id).encode("utf-8")
 
 
-def plan(repo_id, weights, sums_file):
+def plan(repo_id, weights, sums_file, assets_dir=REPO / "hf" / "assets"):
     """(path_in_repo, source) pairs uploaded in one commit."""
-    return [
+    files = [
         ("README.md", model_card(repo_id)),
         (ASSET, Path(weights)),
         ("SHA256SUMS", Path(sums_file)),
         ("LICENSE", REPO / "LICENSE"),
     ]
+    files += [(f"assets/{p.relative_to(assets_dir).as_posix()}", p)
+              for p in sorted(Path(assets_dir).rglob("*")) if p.is_file()]
+    return files
 
 
 def main(argv=None):

@@ -32,6 +32,27 @@ def test_dry_run_lists_files_and_fills_repo_id(tmp_path, capsys):
     assert card.startswith("---\nlicense: agpl-3.0")
 
 
+def test_assets_are_in_the_upload_plan(tmp_path, capsys):
+    up = load()
+    w, sums = write_sums(tmp_path, b"weights")
+    names = [p for p, _ in up.plan("owner/name", w, sums)]
+    assert "assets/example_gitg.png" in names  # the real hf/assets directory
+    assets = tmp_path / "assets"
+    (assets / "sub").mkdir(parents=True)
+    (assets / "a.png").write_bytes(b"a")
+    (assets / "sub" / "b.png").write_bytes(b"b")
+    names = [p for p, _ in up.plan("owner/name", w, sums, assets_dir=assets)]
+    assert names[-2:] == ["assets/a.png", "assets/sub/b.png"]
+    assert up.main(["owner/name", "--weights", str(w), "--sha256sums", str(sums), "--dry-run"]) == 0
+    assert "assets/example_gitg.png" in capsys.readouterr().out
+
+
+def test_existing_repository_visibility_is_not_changed():
+    src = (ROOT / "hf" / "upload.py").read_text()
+    assert "visibility left unchanged" in src
+    assert src.count("create_repo(") == 1 and "update_repo_settings" not in src and "update_repo_visibility" not in src
+
+
 def test_mismatching_weights_are_refused(tmp_path):
     up = load()
     w, sums = write_sums(tmp_path, b"weights")
