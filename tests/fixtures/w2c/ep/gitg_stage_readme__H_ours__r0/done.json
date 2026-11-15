@@ -1,0 +1,1 @@
+{"answer": "FAIL: gitg is a read-only git history viewer and does not support staging. It has no staging area or index/work-tree management, so I cannot stage README.md (nor leave src/util.py unstaged) through this application.", "step": 7}

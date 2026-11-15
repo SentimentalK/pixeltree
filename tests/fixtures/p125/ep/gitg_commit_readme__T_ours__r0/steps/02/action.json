@@ -1,0 +1,20 @@
+{
+ "step": 2,
+ "tool": "scroll",
+ "args": {
+  "x": 600,
+  "y": 300,
+  "dy": -5
+ },
+ "screen_xy": [
+  600,
+  300
+ ],
+ "ok": true,
+ "error": null,
+ "t_start": 1794427628.9994736,
+ "t_action_s": 1.009,
+ "t_obs_s": 0.4006,
+ "n_elements": 85,
+ "t_end": 1794427630.4093325
+}

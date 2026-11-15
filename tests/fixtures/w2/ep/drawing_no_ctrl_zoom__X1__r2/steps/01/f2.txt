@@ -1,0 +1,37 @@
+screen 1920x1080, 36 elements
+btn "Open" 44,26
+combo 113,26
+btn "Q" 114,26
+btn 166,26
+btn 201,26
+text "Drawing" 959,18
+btn "Save" 1710,26
+btn 1766,27
+btn 1814,27
+btn 1852,27
+btn 1893,26
+text "Pencil - Press <Alt> to toggle the 'outline' option" 960,36
+btn 24,85
+btn 25,156
+btn 24,226
+btn 23,297
+img 447,348
+btn 23,365
+btn 23,436
+btn 24,507
+btn 24,576
+btn 24,645
+btn 24,716
+btn 24,786
+btn 24,855
+btn 23,922
+btn 24,993
+btn 29,1051
+btn 64,1051
+btn 99,1052
+btn 135,1052
+input "5 px" 155,1051
+btn 204,1053
+btn 240,1052
+btn "Penil options" 330,1051
+combo "100%" 1869,1053

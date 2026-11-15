@@ -1,0 +1,10 @@
+{
+ "task": "gitg_commit_readme",
+ "app": "gitg",
+ "cond": "T_ours",
+ "display": ":142",
+ "app_config": {
+  "name": "gitg",
+  "process": "gitg"
+ }
+}

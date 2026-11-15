@@ -1,0 +1,16 @@
+{
+ "tasks": [
+  {
+   "id": "drawing_no_ctrl_zoom",
+   "app": "drawing",
+   "difficulty": 1,
+   "sentence": "Open Drawing's Preferences and turn off the option \"Use 'Ctrl' to zoom\"."
+  },
+  {
+   "id": "gitg_commit_readme",
+   "app": "gitg",
+   "difficulty": 2,
+   "sentence": "Commit only the change to README.md, using the commit message: Update usage notes for November"
+  }
+ ]
+}

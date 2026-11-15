@@ -1,0 +1,15 @@
+Screenshot 1280x720. Use pixel coordinates of this image.
+screen 1280x720, 13 elements
+aria:button [e1] "Clone" @(7,7,46,23) c=(30,18)
+aria:button [e2] "Add" @(57,7,46,22) c=(80,18)
+vax:visibleText [e3] "Projects" @(621,13,37,11) c=(639,18)
+aria:button [e4] "Q" @(1109,7,24,23) c=(1121,18)
+aria:button [e5] "✓" @(1136,7,24,23) c=(1148,18)
+aria:button [e6] "目" @(1165,7,24,23) c=(1177,18)
+aria:button [e7] "" @(1201,10,16,16) c=(1209,18)
+aria:button [e8] "□" @(1227,10,16,16) c=(1235,18)
+aria:button [e9] "×" @(1254,10,16,16) c=(1262,18)
+vax:visibleText [e10] "Clone repository" @(8,46,71,12) c=(43,52)
+vax:visibleText [e11] "demo-repo" @(473,67,59,13) c=(502,73)
+aria:listitem [e12] "demo eepoo" @(458,56,366,49) c=(641,80)
+vax:visibleText [e13] "main at ~/Projects" @(472,85,65,10) c=(504,90)

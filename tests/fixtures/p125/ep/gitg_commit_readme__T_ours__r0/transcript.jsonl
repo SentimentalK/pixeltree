@@ -1,0 +1,5 @@
+{"type": "assistant", "message": {"id": "msg_011Cgwk6Pz3zevnP24ycS8xe", "role": "assistant", "content": [{"type": "thinking", "thinking": ""}]}}
+{"type": "assistant", "message": {"id": "msg_011Cgwk6Pz3zevnP24ycS8xe", "role": "assistant", "content": [{"type": "tool_use", "name": "mcp__p125__observe", "input": {}}]}}
+{"type": "assistant", "message": {"id": "msg_011Cgwk6WXhqs4ebajvkRKLJ", "role": "assistant", "content": [{"type": "thinking", "thinking": ""}]}}
+{"type": "assistant", "message": {"id": "msg_011Cgwk6WXhqs4ebajvkRKLJ", "role": "assistant", "content": [{"type": "tool_use", "name": "mcp__p125__scroll", "input": {"x": 600, "y": 300, "dy": -5}}]}}
+{"type": "assistant", "message": {"id": "msg_011Cgwk6WXhqs4ebajvkRKLJ", "role": "assistant", "content": [{"type": "tool_use", "name": "mcp__p125__observe", "input": {}}]}}

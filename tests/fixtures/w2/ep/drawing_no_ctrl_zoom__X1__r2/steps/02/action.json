@@ -1,0 +1,21 @@
+{
+ "step": 2,
+ "tool": "click",
+ "args": {
+  "x": 1893,
+  "y": 26,
+  "button": "left",
+  "double": false
+ },
+ "screen_xy": [
+  1893,
+  26
+ ],
+ "ok": true,
+ "error": null,
+ "t_start": 1794537528.7874703,
+ "t_action_s": 0.8012,
+ "t_obs_s": 0.1273,
+ "n_elements": 1,
+ "t_end": 1794537529.7159312
+}

@@ -1,0 +1,10 @@
+{
+ "task": "gitg_stage_readme",
+ "app": "gitg",
+ "cond": "H_ours",
+ "display": ":154",
+ "app_config": {
+  "name": "gitg",
+  "process": "gitg"
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "task": "drawing_no_ctrl_zoom",
+ "app": "drawing",
+ "cond": "X1",
+ "display": ":152",
+ "app_config": {
+  "name": "drawing",
+  "process": "drawing"
+ }
+}

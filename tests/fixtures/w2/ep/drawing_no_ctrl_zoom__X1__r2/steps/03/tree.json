@@ -1,0 +1,1 @@
+{"source": "ours", "image_size": [1920, 1080], "elements": [{"id": "e1", "role": "aria:img", "name": "", "box": [408, 5, 1440, 1064], "center": [1128, 537], "conf": 0.6738}], "timings": {"detect_s": 0.0397, "ocr_s": 0.0311, "windows_s": 0.0187, "leaves_s": 0.021, "tree_s": 0.0003, "decode_s": 0.0222, "load_s": 0.0, "total_s": 0.0933, "model_s": 0.0711}}
