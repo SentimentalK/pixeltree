@@ -32,8 +32,8 @@ function errorText(code, status, retry) {
     case "too_many_pixels": return "That image has too many pixels (limit 4096 px per side, 12 megapixels).";
     case "unsupported_type": return "Unsupported file type. Please upload a PNG, JPEG or WebP image.";
     case "rate_limited": return "Too many requests from your network. Please try again in " + (retry || "a few") + " seconds.";
-    case "busy": return "The server is busy right now. Please try again in a few seconds.";
-    case "timeout": return "Parsing took too long and was stopped. Try a smaller screenshot.";
+    case "busy": return "The demo is busy, try again in a moment.";
+    case "timeout": return "The demo is busy or the parse took too long, try again in a moment.";
     case "empty": return "The upload was empty.";
     case "invalid_image": return "That image could not be decoded.";
     default: return "Something went wrong (HTTP " + status + "). Please try again later.";
@@ -44,7 +44,7 @@ async function parse(file) {
   if (busy) return;
   if (file.size > MAX_BYTES) { setStatus(errorText("too_large"), true); return; }
   setBusy(true);
-  setStatus("Parsing…", false);
+  setStatus("Parsing… this takes about 10 seconds on our small CPU server.", false);
   let resp, data = null;
   try {
     resp = await fetch("/api/parse", {
