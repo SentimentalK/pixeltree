@@ -16,7 +16,7 @@ Machine-readable copies of every table are in [`csv/`](csv/), one file per table
 | R2 | Offline token accounting for four text formats of the R1 tree (no model call, no application started) | 2026-11-12 | 144 R1 tree episodes, 1,826 observation steps |
 | R3 | Tree-first observation with change-only updates, hover and on-demand look, against screenshot-only agents (Claude Haiku 5.5; one condition with Sonnet 5.5) | 2026-11-12 / 13 | 48 tasks; 144 episodes per Haiku condition, 48 for Sonnet, 768 total |
 | R4 | Gemini 3.8 Flash as an agent through a command-line wrapper (agy) | 2026-11-13 | **Incomplete**: 1 valid task triplet of 48; direction only on 5 tasks |
-| R5 | Four model families as readers of screenshot, tree and hybrid observations (GLM 5.3 Flash, DeepSeek V4.1 Flash, LongCat 2.0 text-only, Claude Haiku 5.5 as shell calibration) | 2026-11-13 | **Partial**: 27 of 48 tasks, one run per cell, no intervals |
+| R5 | Four model families as readers of screenshot, tree and hybrid observations (GLM 5.3 Flash, DeepSeek V4.1 Flash, LongCat 2.0 text-only, Claude Haiku 5.5 as shell calibration) | 2026-11-13 / 14 | 48 tasks, one run per cell, bootstrap intervals over tasks |
 | D1 | Detector: three training arms (A: synthetic base + labels, C: COCO start, B: A plus replayed data) and an untuned baseline, evaluated on held-out Linux apps, a web set, a gold set with macOS screens and a GroundCUA set | 2026-11-10 / 11 | 2,782 training images; exam sets of 303, 186 and 8,255 images |
 | D2 | Detector side experiments: data-size curve, seed variance, CV + OCR baseline, two post-processing rules, second labeler, environment shift, OmniParser v2 baseline | 2026-11-11 | the same exam sets as D1; second labeler on 50 images; environment shift on 48 images |
 
@@ -34,7 +34,7 @@ Other tables:
 - [`R3_tree_first.md`](R3_tree_first.md): conditions, main table, pass rule, paired differences, per app, stop
   reasons, look and hover, token and wall-clock tables, cleared-name clicks and failure classes.
 - [`R4_gemini.md`](R4_gemini.md): the incomplete Gemini run, with its protocol constraints and the sensitivity table.
-- [`R5_four_readers.md`](R5_four_readers.md): scope tables for 24 and 27 tasks, paired differences, shell fix and
+- [`R5_four_readers.md`](R5_four_readers.md): 48-task tables with intervals, the earlier 24- and 27-task tables, paired differences, shell fix and
   reruns, steps and tokens, click checks.
 - [`D1_detector.md`](D1_detector.md): arm definitions, main F1 table, per-group, box-size recall, training curves,
   wall-clock time and latency.
@@ -44,8 +44,8 @@ Other tables:
 
 - **Compare conditions only within one model and one shell.** Absolute numbers across models or across shells
   are not comparable. In R5, Claude Haiku 5.5 through the second shell is a calibration of that shell, not a model result.
-- **Read R5 with its size in mind.** Each cell is one run over 27 tasks, and there are no intervals. Differences
-  under about 15 percentage points are not treated as findings.
+- **Read R5 with its size in mind.** Each cell is one run over 48 tasks. A difference whose 95 % interval (bootstrap
+  over tasks) includes 0 is a direction only; the intervals do not include run-to-run variation on the same task.
 - **R4 is direction only.** It has one complete valid task and a sensitivity view over five tasks with one
   repetition each. It supports no ranking.
 - **Intervals** in R1, R2 and R3 are percentile bootstraps over tasks (2,000 resamples, seed 0), 95 %. Paired

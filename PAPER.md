@@ -2,7 +2,7 @@
 
 *A short technical report. Status: research prototype. Chinese version: [PAPER.zh.md](PAPER.zh.md).*
 
-**Summary.** We trained a small object detector (YOLO11s, 19 MB) on 2,782 desktop and web screenshots labelled by a frontier model (Claude Opus) under a written box convention, and combined it with OCR to turn any screenshot into a text list of on-screen elements ("the tree"). On 10 Linux applications never seen in training it finds elements with class-agnostic F1 0.854 against the same labelling convention. We then built a testbench of 48 programmatically graded tasks in 8 unseen Linux desktop apps and asked whether agents do better reading our tree, the system accessibility tree, or a plain screenshot. The answer depends on the reader. A Claude-class agent (Claude Haiku) does best with the screenshot alone (86 %) and gains nothing from adding our tree. Two non-Claude models that can see images (GLM 5.3 Flash, DeepSeek V4.1 Flash) did better with the tree than without it in a smaller run, and a text-only model (LongCat 2.0) could use the desktop at all only through a tree — ours worked where the system tree was empty. The tree's weaknesses are concrete: icons have no names or garbled names, controls have no state, some elements appear twice, and a token-saving cleaning rule we wrote deleted the close button's "×" and made agents close the app. We release the detector, the screenshot-to-tree code, the testbench, a replay viewer with example episodes, the labelling recipe and all result tables, as a starting point for teams who can take it further.
+**Summary.** We trained a small object detector (YOLO11s, 19 MB) on 2,782 desktop and web screenshots labelled by a frontier model (Claude Opus) under a written box convention, and combined it with OCR to turn any screenshot into a text list of on-screen elements ("the tree"). On 10 Linux applications never seen in training it finds elements with class-agnostic F1 0.854 against the same labelling convention. We then built a testbench of 48 programmatically graded tasks in 8 unseen Linux desktop apps and asked whether agents do better reading our tree, the system accessibility tree, or a plain screenshot. The answer depends on the reader. A Claude-class agent (Claude Haiku) does best with the screenshot alone (86 %) and gains nothing from adding our tree. One non-Claude model that can see images (GLM 5.3 Flash) did better with the screenshot plus our tree than with the screenshot alone (+15 points, 95 % interval 2 to 27, 48 tasks); for another (DeepSeek V4.1 Flash) the tree helped only as a direction. A text-only model (LongCat 2.0) can use the desktop only through a tree: ours worked where the system tree was empty, while elsewhere the system tree did as well or better. The tree's weaknesses are concrete: icons have no names or garbled names, controls have no state, some elements appear twice, and a token-saving cleaning rule we wrote deleted the close button's "×" and made agents close the app. We release the detector, the screenshot-to-tree code, the testbench, a replay viewer with example episodes, the labelling recipe and all result tables, as a starting point for teams who can take it further.
 
 All numbers below come from tables in [`results/`](results/README.md); each is followed by the file it comes from.
 
@@ -110,13 +110,13 @@ Experiment codes used throughout:
 | R2 | offline token accounting of tree formats | — (no model calls) | 1,826 archived observations |
 | R3 | tree-first agent with hover / look | Claude Haiku, `claude -p` | 48 tasks × 3 runs, 768 episodes |
 | R4 | Gemini through another CLI | Gemini 3.8 Flash | 1 complete task (quota ran out) |
-| R5 | four readers through one shell | GLM 5.3 Flash, DeepSeek V4.1 Flash, LongCat 2.0 (text only), Claude Haiku, OMP | 27 of 48 tasks × 1 run |
+| R5 | four readers through one shell | GLM 5.3 Flash, DeepSeek V4.1 Flash, LongCat 2.0 (text only), Claude Haiku, OMP | 48 tasks × 1 run |
 | D1 | detector training arms | — | 303-image exam |
 | D2 | detector side experiments | — | same exam + 50-image second labeller |
 
 ## 5. Results
 
-Read each model only against itself. Do not compare absolute numbers across models or shells. R5 has one run per cell on 27 tasks and no confidence intervals; we treat differences under about 15 points there as not established ([results/R5_four_readers.md](results/R5_four_readers.md)).
+Read each model only against itself. Do not compare absolute numbers across models or shells. R5 has one run per cell on 48 tasks; we report 95 % bootstrap intervals over tasks and treat a difference whose interval includes 0 as a direction only ([results/R5_four_readers.md](results/R5_four_readers.md)).
 
 ### 5.1 Claude-class agents do not need the tree
 
@@ -136,35 +136,35 @@ R1, Claude Haiku, 48 tasks × 3 runs, success with 95 % task-bootstrap intervals
 - **Mechanism (exploratory).** On the 16 tasks where our tree alone always failed, adding it to the screenshot hurt (−20.8 [−37.5, −4.2]); on the other 32 it was neutral (+2.1 [−2.1, +7.3]). A wrong tree misleads; a right tree repeats the pixels ([results/R1_main_exam.md](results/R1_main_exam.md)).
 - **Tree only vs the alternatives.** Our tree alone is level with the flat AT-SPI list overall (+4.9 [−9.7, +20.1]) and beats OmniParser v2 (+13.2 [+2.1, +24.3]). On the two apps whose accessibility tree is empty it is +52.8 [+25.0, +77.8] ahead ([results/R1_main_exam.md](results/R1_main_exam.md)).
 - **Why our tree fails.** In a sample of failures it rarely missed the element (0 of 8). It named it wrongly — for example gitg's stage-view button OCR'd as "业" — or the agent mis-planned ([results/R1_main_exam.md](results/R1_main_exam.md)).
-- **Same ranking through the other shell.** Through OMP, Haiku again ranks the screenshot above the tree: 0 wins, 6 losses, 21 ties over 27 tasks ([results/R5_four_readers.md](results/R5_four_readers.md)). Replay: [`r5__haiku__gitg_commit_readme__T_ours__r0`](examples/episodes/) fails after cycling between the file list and the bottom buttons; [`r5__haiku__gitg_commit_readme__S_shot__r0`](examples/episodes/) succeeds; the `claude -p` episodes `r1__haiku__gitg_commit_readme__{T_ours,S_shot}__r0` go the same way.
+- **Same ranking through the other shell.** Through OMP, Haiku again ranks the screenshot above the tree: 0 wins, 12 losses, 36 ties over 48 tasks, −25 points (95 % interval −38 to −12), and screenshot + tree equals the screenshot (+2, −4 to 8). Haiku through OMP stays within 5 points of Haiku through `claude -p` in every condition, all intervals including 0 ([results/R5_four_readers.md](results/R5_four_readers.md)). Replay: [`r5__haiku__gitg_commit_readme__T_ours__r0`](examples/episodes/) fails after cycling between the file list and the bottom buttons; [`r5__haiku__gitg_commit_readme__S_shot__r0`](examples/episodes/) succeeds; the `claude -p` episodes `r1__haiku__gitg_commit_readme__{T_ours,S_shot}__r0` go the same way.
 
 **Tree-first does not rescue it either (R3).** We gave Haiku a cleaned, compact tree that sends only changes after each action, plus a `hover` tool and a `look` tool that returns a screenshot on demand ([results/R3_tree_first.md](results/R3_tree_first.md)):
 - It succeeded 71 % [59, 83] against 82 % [72, 91] for the screenshot agent in the same batch, a difference of −11.1 [−19.4, −4.2].
 - It was cheaper (0.75× cost per episode) but slower (26.0 vs 21.8 s).
 - It did not really work tree-first: 91 % of its episodes looked at the screenshot at least once.
 
-### 5.2 Some non-Claude readers do better with the tree
+### 5.2 One non-Claude reader does better with the tree added
 
-R5, 27 tasks, one run per cell, through OMP ([results/R5_four_readers.md](results/R5_four_readers.md)):
+R5, 48 tasks, one run per cell, through OMP; 95 % intervals in brackets ([results/R5_four_readers.md](results/R5_four_readers.md)):
 
 | reader | screenshot | our tree | screenshot + our tree | AT-SPI tree |
 |---|---|---|---|---|
-| GLM 5.3 Flash | 17/27 | 18/27 | **24/27** | – |
-| DeepSeek V4.1 Flash | 19/27 | **22/27** | 21/27 | – |
-| LongCat 2.0 (no image input) | – | **19/27** | – | 15/27 |
-| Claude Haiku (shell calibration) | **21/27** | 15/27 | **21/27** | – |
+| GLM 5.3 Flash | 34/48 (56–83 %) | 34/48 (58–83 %) | **41/48** (75–94 %) | – |
+| DeepSeek V4.1 Flash | 34/48 (58–83 %) | 37/48 (65–88 %) | **39/48** (69–92 %) | – |
+| LongCat 2.0 (no image input) | – | **33/48** (54–81 %) | – | 29/48 (46–75 %) |
+| Claude Haiku (shell calibration) | 39/48 (71–92 %) | 27/48 (44–71 %) | **40/48** (73–92 %) | – |
 
-- **GLM.** Screenshot + tree is its best condition: 26 points above the screenshot alone, with 9 wins, 2 losses and 16 ties by task. This is the one difference in R5 above our 15-point bar.
-- **DeepSeek.** Tree alone is 11 points above the screenshot (6 wins / 3 losses / 18 ties). That is under the bar, so we read it as a direction only.
+- **GLM.** Screenshot + tree is its best condition: 15 points above the screenshot alone (95 % interval 2 to 27), with 9 wins, 2 losses and 37 ties by task. This is the one difference between conditions of a non-Claude reader in R5 whose interval excludes 0. Tree alone ties with the screenshot (0, −12 to 15). On the first 27 tasks the hybrid gain was 26 points; on the 21 later tasks both conditions scored 17/21.
+- **DeepSeek.** Tree alone is 6 points above the screenshot (8 wins / 5 losses / 35 ties; interval −8 to 21), and screenshot + tree 10 points above it (0 to 21). Both intervals reach 0, so we read them as directions only (11 points for the tree on the first 27 tasks).
 - **Example (gitg, "stage only README.md").** DeepSeek with the screenshot used all 20 steps and staged nothing. With the tree it also flailed for 12 steps; at step 13 it clicked the button named "业" (the stage-view toggle). The next tree contained "Staged" and "Stage selection", and it finished at step 18. Replay: [`r5__deepseek__gitg_stage_readme__S_shot__r0`](examples/episodes/) vs [`r5__deepseek__gitg_stage_readme__T_ours__r0`](examples/episodes/); all readers on this task side by side on the viewer's task page.
 - **Not just poor clicking.** Why these models benefit is not separated by our data. A click audit found DeepSeek's screenshot clicks on target 24 of 24 times, so imprecise clicking alone does not explain it ([results/R5_four_readers.md](results/R5_four_readers.md)).
 - **Gemini (R4).** Only one complete task before the CLI quota ran out. Pooling every graded episode on 5 tasks gives screenshot 3/7, tree 5/5, screenshot + tree 5/5 — a direction, not a result ([results/R4_gemini.md](results/R4_gemini.md)).
 
 ### 5.3 A text-only model can use the desktop through the tree, including where the system tree is empty
 
-LongCat 2.0 cannot take images. Reading our tree it completed 19 of 27 tasks (18 of the first 24); reading the AT-SPI list, 15 of 27; by task 7 wins, 3 losses, 17 ties ([results/R5_four_readers.md](results/R5_four_readers.md)).
+LongCat 2.0 cannot take images. Reading our tree it completed 33 of 48 tasks; reading the AT-SPI list, 29 of 48; by task 10 wins, 6 losses, 32 ties, +8 points with an interval of −8 to 25, so only a direction overall ([results/R5_four_readers.md](results/R5_four_readers.md)). Twelve of its tree episodes hit the 10-minute cap.
 
-On GNOME Contacts and GNOME Calendar, the AT-SPI list scored 0/3 and 0/6, because it contains no elements there ([results/R5_four_readers.md](results/R5_four_readers.md)). Replay: [`r5__longcat__gnome_contacts_email__T_atspi__r0`](examples/episodes/) receives "0 elements" at every step and can only press Tab and Escape blindly; [`r5__longcat__gnome_contacts_email__T_ours__r0`](examples/episodes/) creates the contact in 8 steps.
+The whole difference comes from GNOME Contacts and GNOME Calendar, where the AT-SPI list scored 0/6 and 0/6 because it contains no elements (our tree: 6/6 and 3/6). On the other six apps the AT-SPI list was ahead, 29/36 against 24/36 ([results/R5_four_readers.md](results/R5_four_readers.md)). Replay: [`r5__longcat__gnome_contacts_email__T_atspi__r0`](examples/episodes/) receives "0 elements" at every step and can only press Tab and Escape blindly; [`r5__longcat__gnome_contacts_email__T_ours__r0`](examples/episodes/) creates the contact in 8 steps.
 
 ### 5.4 Cost and tokens
 
@@ -226,7 +226,7 @@ Also: a CLI agent started inside a project directory can pick up project-level c
 
 ## 7. Limitations
 
-- **R5 is incomplete.** 27 of 48 tasks, one run per cell, no intervals ([results/R5_four_readers.md](results/R5_four_readers.md)).
+- **R5 has one run per cell.** 48 tasks, one run per model and condition; the intervals resample tasks and do not include run-to-run variation on the same task ([results/R5_four_readers.md](results/R5_four_readers.md)).
 - **Narrow coverage.** 8 Linux apps with fairly sparse screens: on average 26–103 detected elements per screen, depending on the app ([results/R2_token_accounting.md](results/R2_token_accounting.md)). Dense UIs, high-DPI screens, Windows and macOS are untested.
 - **The AT-SPI baseline is only the flat form.** Role, name and box, clicked by coordinates, with no states and no element actions. It is not a ceiling for what system accessibility APIs can offer.
 - **Gemini is anecdotal.** One complete task ([results/R4_gemini.md](results/R4_gemini.md)).

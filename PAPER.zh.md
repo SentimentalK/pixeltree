@@ -2,7 +2,7 @@
 
 *简短技术报告。状态：研究原型。英文版：[PAPER.md](PAPER.md)（以英文版为准）。*
 
-**摘要。** 我们在 2,782 张桌面和网页截图上训练了一个小型目标检测器（YOLO11s，19 MB）。这些截图由前沿模型（Claude Opus）依照一份书面的框选约定进行标注。检测器与 OCR 结合后，可以把任意截图转换为屏幕元素的文本列表（“树”，即元素树）。在训练中从未出现过的 10 个 Linux 应用上，它在相同的标注约定下取得类无关 F1 0.854。随后我们搭建了一个测试平台，包含 8 个未见过的 Linux 桌面应用中的 48 个任务，任务由程序自动评分。我们借此检验：智能体读取我们的树、读取系统无障碍树，还是只读取普通截图，哪种效果更好。答案取决于读取者。Claude 类智能体（Claude Haiku）只用截图时表现最好（86 %），加入我们的树后毫无收益。两个能看图像的非 Claude 模型（GLM 5.3 Flash、DeepSeek V4.1 Flash）在一项规模较小的实验中，有树时比没有树时表现更好。一个纯文本模型（LongCat 2.0）只有通过树才能操作桌面，而且在系统树为空的地方，我们的树依然可用。树的弱点是具体的：图标没有名称或名称乱码，控件没有状态，有些元素会出现两次。我们编写的一条节省 token 的清理规则还删掉了关闭按钮的“×”，导致智能体把应用关掉了。我们发布了检测器、截图到树的代码、测试平台、带示例回合的回放查看器、标注方法以及全部结果表格，作为有能力继续推进的团队的起点。
+**摘要。** 我们在 2,782 张桌面和网页截图上训练了一个小型目标检测器（YOLO11s，19 MB）。这些截图由前沿模型（Claude Opus）依照一份书面的框选约定进行标注。检测器与 OCR 结合后，可以把任意截图转换为屏幕元素的文本列表（“树”，即元素树）。在训练中从未出现过的 10 个 Linux 应用上，它在相同的标注约定下取得类无关 F1 0.854。随后我们搭建了一个测试平台，包含 8 个未见过的 Linux 桌面应用中的 48 个任务，任务由程序自动评分。我们借此检验：智能体读取我们的树、读取系统无障碍树，还是只读取普通截图，哪种效果更好。答案取决于读取者。Claude 类智能体（Claude Haiku）只用截图时表现最好（86 %），加入我们的树后毫无收益。一个能看图像的非 Claude 模型（GLM 5.3 Flash）在截图之外再给我们的树时，比只看截图表现更好（48 个任务上高 15 个百分点，95 % 区间 2 至 27）；另一个（DeepSeek V4.1 Flash）只在方向上受益。一个纯文本模型（LongCat 2.0）只有通过树才能操作桌面：在系统树为空的地方，我们的树依然可用；在其他地方，系统树与之相当或更好。树的弱点是具体的：图标没有名称或名称乱码，控件没有状态，有些元素会出现两次。我们编写的一条节省 token 的清理规则还删掉了关闭按钮的“×”，导致智能体把应用关掉了。我们发布了检测器、截图到树的代码、测试平台、带示例回合的回放查看器、标注方法以及全部结果表格，作为有能力继续推进的团队的起点。
 
 下文所有数字都来自 [`results/`](results/README.md) 中的表格；每个数字之后都注明了来源文件。
 
@@ -110,13 +110,13 @@ YOLO11s，输入尺寸 1280 px，在 2,782 张已标注图像上微调 40 个 ep
 | R2 | 树格式的离线 token 核算 | —（无模型调用） | 1,826 条存档观察 |
 | R3 | 树优先的智能体，带 hover / look | Claude Haiku，`claude -p` | 48 个任务 × 3 次运行，768 个回合 |
 | R4 | 通过另一 CLI 调用 Gemini | Gemini 3.8 Flash | 1 个完整任务（配额耗尽） |
-| R5 | 通过同一外壳的四个读者 | GLM 5.3 Flash、DeepSeek V4.1 Flash、LongCat 2.0（仅文本）、Claude Haiku、OMP | 48 个任务中的 27 个 × 1 次运行 |
+| R5 | 通过同一外壳的四个读者 | GLM 5.3 Flash、DeepSeek V4.1 Flash、LongCat 2.0（仅文本）、Claude Haiku、OMP | 48 个任务 × 1 次运行 |
 | D1 | 检测器训练臂 | — | 303 张图像的考试 |
 | D2 | 检测器补充实验 | — | 同一考试 + 50 张第二标注者图像 |
 
 ## 5. 结果
 
-请只将每个模型与它自己比较。不要跨模型或跨外壳比较绝对数值。R5 每个单元格只在 27 个任务上运行一次，且没有置信区间；因此我们认为该处低于约 15 个百分点的差异尚未确立（[results/R5_four_readers.md](results/R5_four_readers.md)）。
+请只将每个模型与它自己比较。不要跨模型或跨外壳比较绝对数值。R5 每个单元格在 48 个任务上各运行一次；我们报告按任务重抽样的 95 % 区间，区间含 0 的差异只视为方向（[results/R5_four_readers.md](results/R5_four_readers.md)）。
 
 ### 5.1 Claude 类智能体不需要树
 
@@ -136,35 +136,35 @@ R1，Claude Haiku，48 个任务 × 3 次运行，成功率及 95 % 任务自助
 - **机制（探索性）。** 在我们的树单独使用时总是失败的 16 个任务上，把它加入截图会造成损害（−20.8 [−37.5, −4.2]）；在其余 32 个任务上则无影响（+2.1 [−2.1, +7.3]）。错误的树会误导；正确的树只是重复了像素中已有的信息（[results/R1_main_exam.md](results/R1_main_exam.md)）。
 - **仅用树与其他替代方案相比。** 总体而言，我们的树单独使用与扁平的 AT-SPI 列表持平（+4.9 [−9.7, +20.1]），并优于 OmniParser v2（+13.2 [+2.1, +24.3]）。在两个无障碍树为空的应用上，我们的树领先 +52.8 [+25.0, +77.8]（[results/R1_main_exam.md](results/R1_main_exam.md)）。
 - **我们的树为何失败。** 在抽样的失败案例中，树很少漏掉元素（8 个中有 0 个）。它的问题是名称识别错误——例如 gitg 的阶段视图按钮被 OCR 成了“业”——或者是智能体规划失误（[results/R1_main_exam.md](results/R1_main_exam.md)）。
-- **通过另一外壳得到相同的排序。** 通过 OMP，Haiku 同样把截图排在树之前：27 个任务中 0 胜、6 负、21 平（[results/R5_four_readers.md](results/R5_four_readers.md)）。回放：[`r5__haiku__gitg_commit_readme__T_ours__r0`](examples/episodes/) 在文件列表与底部按钮之间反复切换后失败；[`r5__haiku__gitg_commit_readme__S_shot__r0`](examples/episodes/) 成功；`claude -p` 的回合 `r1__haiku__gitg_commit_readme__{T_ours,S_shot}__r0` 也呈现相同的走向。
+- **通过另一外壳得到相同的排序。** 通过 OMP，Haiku 同样把截图排在树之前：48 个任务中 0 胜、12 负、36 平，差 −25 个百分点（95 % 区间 −38 至 −12）；截图 + 树与仅截图持平（+2，−4 至 8）。在每个条件下，经 OMP 的 Haiku 与经 `claude -p` 的 Haiku 相差都不超过 5 个百分点，区间都含 0（[results/R5_four_readers.md](results/R5_four_readers.md)）。回放：[`r5__haiku__gitg_commit_readme__T_ours__r0`](examples/episodes/) 在文件列表与底部按钮之间反复切换后失败；[`r5__haiku__gitg_commit_readme__S_shot__r0`](examples/episodes/) 成功；`claude -p` 的回合 `r1__haiku__gitg_commit_readme__{T_ours,S_shot}__r0` 也呈现相同的走向。
 
 **树优先同样无法挽救（R3）。** 我们给 Haiku 提供了一棵清理过、紧凑的树（每次操作后只发送变化的部分），以及一个 `hover` 工具和一个 `look` 工具（按需返回截图）（[results/R3_tree_first.md](results/R3_tree_first.md)）：
 - 成功率为 71 % [59, 83]，而同一批次中的截图智能体为 82 % [72, 91]，差值为 −11.1 [−19.4, −4.2]。
 - 它更便宜（每回合成本为 0.75 倍），但更慢（26.0 秒对 21.8 秒）。
 - 它并没有真正以树为先：91 % 的回合至少查看过一次截图。
 
-### 5.2 一些非 Claude 读者借助树表现更好
+### 5.2 一个非 Claude 读者在加上树后表现更好
 
-R5，27 个任务，每个单元格运行一次，通过 OMP（[results/R5_four_readers.md](results/R5_four_readers.md)）：
+R5，48 个任务，每个单元格运行一次，通过 OMP；括号内为 95 % 区间（[results/R5_four_readers.md](results/R5_four_readers.md)）：
 
 | 读者 | 截图 | 我们的树 | 截图 + 我们的树 | AT-SPI 树 |
 |---|---|---|---|---|
-| GLM 5.3 Flash | 17/27 | 18/27 | **24/27** | – |
-| DeepSeek V4.1 Flash | 19/27 | **22/27** | 21/27 | – |
-| LongCat 2.0（无图像输入） | – | **19/27** | – | 15/27 |
-| Claude Haiku（外壳校准） | **21/27** | 15/27 | **21/27** | – |
+| GLM 5.3 Flash | 34/48（56–83 %） | 34/48（58–83 %） | **41/48**（75–94 %） | – |
+| DeepSeek V4.1 Flash | 34/48（58–83 %） | 37/48（65–88 %） | **39/48**（69–92 %） | – |
+| LongCat 2.0（无图像输入） | – | **33/48**（54–81 %） | – | 29/48（46–75 %） |
+| Claude Haiku（外壳校准） | 39/48（71–92 %） | 27/48（44–71 %） | **40/48**（73–92 %） | – |
 
-- **GLM。** 截图 + 树是它的最佳条件：比仅截图高出 26 个百分点，按任务计 9 胜、2 负、16 平。这是 R5 中唯一超过我们 15 个百分点标准的差异。
-- **DeepSeek。** 仅用树比截图高出 11 个百分点（6 胜 / 3 负 / 18 平）。这低于标准，因此我们只将其视为一个方向。
+- **GLM。** 截图 + 树是它的最佳条件：比仅截图高出 15 个百分点（95 % 区间 2 至 27），按任务计 9 胜、2 负、37 平。这是 R5 中非 Claude 读者唯一一个区间不含 0 的条件间差异。仅用树与仅截图持平（0，−12 至 15）。在前 27 个任务上，截图 + 树的提升为 26 个百分点；在后加的 21 个任务上，两个条件都是 17/21。
+- **DeepSeek。** 仅用树比截图高出 6 个百分点（8 胜 / 5 负 / 35 平；区间 −8 至 21），截图 + 树比截图高 10 个百分点（0 至 21）。两个区间都触及 0，因此我们只将其视为方向（前 27 个任务上仅用树高 11 个百分点）。
 - **示例（gitg，“stage only README.md”）。** 使用截图的 DeepSeek 用满了全部 20 步，什么也没有暂存。使用树时它也乱试了 12 步；第 13 步时它点击了名为“业”的按钮（即阶段视图切换）。下一棵树中出现了“Staged”和“Stage selection”，它在第 18 步完成了任务。回放：[`r5__deepseek__gitg_stage_readme__S_shot__r0`](examples/episodes/) 与 [`r5__deepseek__gitg_stage_readme__T_ours__r0`](examples/episodes/)；该任务上所有读者的并排比较见查看器的任务页面。
 - **不只是点击不准。** 我们的数据没有区分出这些模型受益的原因。点击审计发现，DeepSeek 的截图点击在 24 次中有 24 次命中目标，因此仅凭点击不准并不能解释这一现象（[results/R5_four_readers.md](results/R5_four_readers.md)）。
 - **Gemini（R4）。** 在 CLI 配额耗尽前只完成了一个完整任务。合并 5 个任务上所有已评分的回合，得到截图 3/7、树 5/5、截图 + 树 5/5——这是一个方向，而非结果（[results/R4_gemini.md](results/R4_gemini.md)）。
 
 ### 5.3 纯文本模型可以通过树操作桌面，包括在系统树为空的地方
 
-LongCat 2.0 无法接收图像。通过我们的树，它完成了 27 个任务中的 19 个（前 24 个中的 18 个）；通过 AT-SPI 列表则为 27 个中的 15 个；按任务计为 7 胜、3 负、17 平（[results/R5_four_readers.md](results/R5_four_readers.md)）。
+LongCat 2.0 无法接收图像。通过我们的树，它完成了 48 个任务中的 33 个；通过 AT-SPI 列表则为 48 个中的 29 个；按任务计为 10 胜、6 负、32 平，差 +8 个百分点，区间 −8 至 25，因此整体上只是一个方向（[results/R5_four_readers.md](results/R5_four_readers.md)）。读树时有 12 个回合撞到 10 分钟上限。
 
-在 GNOME Contacts 和 GNOME Calendar 上，AT-SPI 列表分别得 0/3 和 0/6，因为那里没有任何元素（[results/R5_four_readers.md](results/R5_four_readers.md)）。回放：[`r5__longcat__gnome_contacts_email__T_atspi__r0`](examples/episodes/) 在每一步都收到“0 个元素”，只能盲目地按 Tab 和 Escape；[`r5__longcat__gnome_contacts_email__T_ours__r0`](examples/episodes/) 则用 8 步创建了联系人。
+差异全部来自 GNOME Contacts 和 GNOME Calendar：AT-SPI 列表在这两个应用上分别得 0/6 和 0/6，因为那里没有任何元素（我们的树：6/6 和 3/6）。在其余 6 个应用上，AT-SPI 列表反而领先，36 个中 29 个对 24 个（[results/R5_four_readers.md](results/R5_four_readers.md)）。回放：[`r5__longcat__gnome_contacts_email__T_atspi__r0`](examples/episodes/) 在每一步都收到“0 个元素”，只能盲目地按 Tab 和 Escape；[`r5__longcat__gnome_contacts_email__T_ours__r0`](examples/episodes/) 则用 8 步创建了联系人。
 
 ### 5.4 成本与 token
 
@@ -226,7 +226,7 @@ LongCat 2.0 无法接收图像。通过我们的树，它完成了 27 个任务�
 
 ## 7. 局限
 
-- **R5 尚不完整。** 48 个任务中只有 27 个，每个单元格一次运行，没有置信区间（[results/R5_four_readers.md](results/R5_four_readers.md)）。
+- **R5 每个单元格只运行一次。** 48 个任务，每个模型和条件各一次；区间对任务重抽样，不包含同一任务重复运行的波动（[results/R5_four_readers.md](results/R5_four_readers.md)）。
 - **覆盖范围窄。** 8 个 Linux 应用，屏幕内容相对稀疏：根据应用不同，平均每屏检测到 26–103 个元素（[results/R2_token_accounting.md](results/R2_token_accounting.md)）。密集界面、高 DPI 屏幕、Windows 和 macOS 均未测试。
 - **AT-SPI 基线只是扁平形式。** 仅包含角色、名称与框，通过坐标点击，没有状态，也没有元素操作。它并不代表系统无障碍 API 所能提供的上限。
 - **Gemini 结果仅为轶事。** 只有一个完整任务（[results/R4_gemini.md](results/R4_gemini.md)）。

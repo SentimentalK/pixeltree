@@ -16,10 +16,10 @@ We then measured, on 48 programmatically graded tasks in 8 unseen Linux apps, wh
 - **Claude-class agents do not need the tree.**
   - Claude Haiku with only a screenshot: **86 %**. With only our tree: 57 %. Screenshot + tree: 81 %, no gain.
   - A "tree first, look when needed" agent was cheaper but 11 points worse ([results/R1](results/R1_main_exam.md), [R3](results/R3_tree_first.md)).
-- **Some other readers do better with it** (smaller run: 27 tasks, one run per cell, through the OMP CLI):
-  - GLM 5.3 Flash: 24/27 with screenshot + tree vs 17/27 with the screenshot only.
-  - DeepSeek V4.1 Flash: 22/27 with the tree vs 19/27, a direction only.
-  - Text-only LongCat 2.0: 19/27 with our tree vs 15/27 with the flat system accessibility tree, which is empty on two GTK4 apps ([results/R5](results/R5_four_readers.md)).
+- **One other reader does better with it** (48 tasks, one run per cell, through the OMP CLI; 95 % intervals over tasks):
+  - GLM 5.3 Flash: 41/48 with screenshot + tree vs 34/48 with the screenshot only, +15 points (2 to 27).
+  - DeepSeek V4.1 Flash: 37/48 with the tree vs 34/48, +6 points (−8 to 21), a direction only.
+  - Text-only LongCat 2.0: 33/48 with our tree vs 29/48 with the flat system accessibility tree, +8 points (−8 to 25), a direction only; the whole difference is on two GTK4 apps where that tree is empty ([results/R5](results/R5_four_readers.md)).
 - **What the tree lacks.** Icons have no names or OCR-garbled names, controls have no state, and some elements appear twice. A token-saving cleaning rule of ours blanked the close button "×", and agents closed the app in 39 of 144 episodes ([PAPER §6](PAPER.md#6-negative-results-and-defects)).
 - **A cheap fix for screenshot agents.** Drop the redundant `observe` tool and send the first screenshot with the task: 89 % vs 82 %, fewer steps and lower cost ([results/R3](results/R3_tree_first.md)).
 

@@ -1,0 +1,6 @@
+Model (shell),S_shot,T_ours,H_ours,T_atspi
+GLM 5.3 Flash,34/48 (71 %; 56–83),34/48 (71 %; 58–83),41/48 (85 %; 75–94),–
+DeepSeek V4.1 Flash,34/48 (71 %; 58–83),37/48 (77 %; 65–88),39/48 (81 %; 69–92),–
+LongCat 2.0 (no image input),–,33/48 (69 %; 54–81); 12 timeouts,–,29/48 (60 %; 46–75); 3 timeouts
+"Claude Haiku 5.5 (this shell, calibration)",39/48 (81 %; 71–92),27/48 (56 %; 44–71),40/48 (83 %; 73–92),–
+"Claude Haiku 5.5 (R1 `claude -p` shell), 48 tasks, mean of 3 reps",86 %,57 %,81 %,–

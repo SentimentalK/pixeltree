@@ -1,0 +1,11 @@
+Model,Pair,"All 48 tasks: win / loss / tie, mean difference (95 % interval), points",Scope B (27): win / loss / tie (mean),Reading
+GLM,T_ours − S_shot,"6 / 6 / 36, 0 (−12 to +15)",5 / 4 / 18 (+4),tie
+GLM,H_ours − S_shot,"9 / 2 / 37, +15 (+2 to +27)",9 / 2 / 16 (+26),"holds, smaller"
+GLM,H_ours − T_ours,"10 / 3 / 35, +15 (0 to +27)",8 / 2 / 17 (+22),lower bound at 0: direction
+DeepSeek,T_ours − S_shot,"8 / 5 / 35, +6 (−8 to +21)",6 / 3 / 18 (+11),weaker: direction only
+DeepSeek,H_ours − S_shot,"6 / 1 / 41, +10 (0 to +21)",3 / 1 / 23 (+7),lower bound at 0: direction
+DeepSeek,H_ours − T_ours,"5 / 3 / 40, +4 (−8 to +15)",2 / 3 / 22 (−4),no difference
+LongCat,T_ours − T_atspi,"10 / 6 / 32, +8 (−8 to +25)",7 / 3 / 17 (+15),weaker: direction only
+Claude Haiku 5.5,T_ours − S_shot,"0 / 12 / 36, −25 (−38 to −12)",0 / 6 / 21 (−22),"holds, stronger"
+Claude Haiku 5.5,H_ours − S_shot,"2 / 1 / 45, +2 (−4 to +8)",1 / 1 / 25 (0),no difference
+Claude Haiku 5.5,H_ours − T_ours,"13 / 0 / 35, +27 (+15 to +40)",6 / 0 / 21 (+22),holds
