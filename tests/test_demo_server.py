@@ -164,3 +164,31 @@ def test_healthz_waits_for_load():
                 break
             time.sleep(0.05)
         assert r.status_code == 200 and r.json() == {"ok": True}
+
+
+def test_multipart_upload_gets_415():
+    c = make()
+    r = c.post("/api/parse", files={"image": ("gitg.png", png(64, 48), "image/png")})
+    assert r.status_code == 415
+    assert r.json()["error"] == "unsupported_type"
+    assert "request body" in r.json()["message"]
+
+
+def test_foreign_open_error_is_415_not_500(monkeypatch):
+    # ultralytics replaces Image.open with a wrapper that raises its own exception type on non-images.
+    class Wrapped(Exception):
+        pass
+
+    def broken_open(*a, **k):
+        raise Wrapped("cannot identify image file")
+
+    monkeypatch.setattr("demo.server.Image.open", broken_open)
+    r = post(make(), b"hello")
+    assert r.status_code == 415
+
+
+def test_malformed_requests_are_4xx():
+    c = make()
+    assert post(c, b"").status_code == 400
+    assert c.get("/api/parse").status_code == 405
+    assert c.put("/api/parse", content=png(8, 8)).status_code == 405

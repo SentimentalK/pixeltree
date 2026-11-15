@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
 
-from PIL import Image, ImageOps, UnidentifiedImageError
+from PIL import Image, ImageOps
 from starlette.applications import Starlette
 from starlette.middleware import Middleware
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -108,7 +108,9 @@ def _decode(body, s):
         img = Image.open(BytesIO(body))
     except Image.DecompressionBombError:
         raise too_many
-    except (UnidentifiedImageError, OSError, ValueError, SyntaxError):
+    except Exception:
+        # Any failure to open is a bad upload, never a server error. (ultralytics replaces Image.open with a
+        # wrapper that raises its own exception type, so do not rely on UnidentifiedImageError alone.)
         raise ApiError(415, "unsupported_type", "Only PNG, JPEG and WebP images are supported.")
     if img.format not in FORMATS:
         raise ApiError(415, "unsupported_type", "Only PNG, JPEG and WebP images are supported.")
@@ -211,6 +213,9 @@ def create_app(infer=None, settings=None, load=None):
                 sem.release()
 
             try:
+                if (request.headers.get("content-type") or "").lower().startswith("multipart/"):
+                    raise ApiError(415, "unsupported_type", "Send the image itself as the request body "
+                                   "(e.g. curl --data-binary @shot.png), not as a multipart form.")
                 cl = request.headers.get("content-length")
                 if cl and cl.isdigit() and int(cl) > s.max_bytes:
                     raise ApiError(413, "too_large", f"File is too large; max {s.max_bytes // (1024 * 1024)} MB.")
