@@ -1,0 +1,389 @@
+{
+ "version": 1,
+ "tasks": [
+  {
+   "id": "drawing_banner_save_as",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 3,
+   "sentence": "Create a new image that is 640 pixels wide and 360 pixels high, write the word Harbor on it, and save it as harbor-banner.png in the Pictures folder."
+  },
+  {
+   "id": "drawing_no_ctrl_zoom",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 1,
+   "sentence": "Open Drawing's Preferences and turn off the option \"Use 'Ctrl' to zoom\"."
+  },
+  {
+   "id": "drawing_rotate_save",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 2,
+   "sentence": "Rotate the open picture 90 degrees clockwise (to the right) and save it."
+  },
+  {
+   "id": "drawing_scale_save",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 2,
+   "sentence": "Scale the open picture to 400 pixels wide and 300 pixels high and save it."
+  },
+  {
+   "id": "drawing_show_tool_names",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 1,
+   "sentence": "In Drawing, turn on \"Show tools names\" so the tool list shows text labels."
+  },
+  {
+   "id": "drawing_text_save",
+   "app": "drawing",
+   "tier": "good",
+   "atspi_recall_05": 0.593,
+   "difficulty": 2,
+   "sentence": "Write the word Harbor on the open picture with the text tool, then save the picture."
+  },
+  {
+   "id": "gitg_checkout_branch",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 1,
+   "sentence": "In the gitg window, switch the repository to the existing branch release-2026-11 (check it out)."
+  },
+  {
+   "id": "gitg_commit_readme",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 2,
+   "sentence": "Commit only the change to README.md, using the commit message: Update usage notes for November"
+  },
+  {
+   "id": "gitg_commit_two_then_branch",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 3,
+   "sentence": "Commit src/util.py and the new file docs/CHANGELOG.md together (leave README.md uncommitted) with the message \"Add changelog and subtract helper\", then create a branch named release-2026-12 at that new commit."
+  },
+  {
+   "id": "gitg_create_branch",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 2,
+   "sentence": "Create a new branch named tide-notes that starts at the newest commit of main, \"Use util in main\"."
+  },
+  {
+   "id": "gitg_stage_readme",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 1,
+   "sentence": "In gitg, stage the modified file README.md without committing, and leave src/util.py unstaged."
+  },
+  {
+   "id": "gitg_tag_commit",
+   "app": "gitg",
+   "tier": "good",
+   "atspi_recall_05": 0.53,
+   "difficulty": 2,
+   "sentence": "Create a tag named v2026.11 on the commit whose subject is \"Document usage\"."
+  },
+  {
+   "id": "gnome_calendar_allday_event",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 1,
+   "sentence": "Add an all-day event titled Harbor Inspection on 2026-11-12."
+  },
+  {
+   "id": "gnome_calendar_delete_event",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 2,
+   "sentence": "Delete the event \"Dock Safety Meeting\" on 2026-11-18."
+  },
+  {
+   "id": "gnome_calendar_event_location",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 2,
+   "sentence": "Add an all-day event titled Customs Visit on 2026-11-24 with the location Pier 9."
+  },
+  {
+   "id": "gnome_calendar_timed_event",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 3,
+   "sentence": "Create an event titled Tide Briefing on 2026-11-12 from 10:00 to 11:00 in the location Harbor Office."
+  },
+  {
+   "id": "gnome_calendar_two_events",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 2,
+   "sentence": "Add an all-day event Crew Dinner on 2026-11-26 and an all-day event Crew Breakfast on 2026-11-27."
+  },
+  {
+   "id": "gnome_calendar_week_view",
+   "app": "gnome-calendar",
+   "tier": "poor",
+   "atspi_recall_05": 0.004,
+   "difficulty": 1,
+   "sentence": "In GNOME Calendar, switch the view from Month to Week."
+  },
+  {
+   "id": "gnome_contacts_email",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 2,
+   "sentence": "Create a new contact named Harbor Clerk with the email address clerk@harbor.example."
+  },
+  {
+   "id": "gnome_contacts_new_name",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 1,
+   "sentence": "Create a new contact named Marina Office."
+  },
+  {
+   "id": "gnome_contacts_phone",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 2,
+   "sentence": "Create a new contact named Dock Master with the phone number 555-0142."
+  },
+  {
+   "id": "gnome_contacts_phone_email",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 2,
+   "sentence": "Create a new contact named Pier Agent with the phone number 555-0177 and the email address agent@pier.example."
+  },
+  {
+   "id": "gnome_contacts_sort_surname",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 1,
+   "sentence": "In GNOME Contacts, open the main menu and sort the contact list by surname."
+  },
+  {
+   "id": "gnome_contacts_work_phone",
+   "app": "gnome-contacts",
+   "tier": "poor",
+   "atspi_recall_05": 0.0,
+   "difficulty": 3,
+   "sentence": "Create a new contact named Quay Manager with the phone number 555-0188 labelled Work and the email address quay@harbor.example."
+  },
+  {
+   "id": "keepassxc_add_entry",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 2,
+   "sentence": "Add a new entry with the title Harbor Wifi and the username dock-admin."
+  },
+  {
+   "id": "keepassxc_add_entry_url",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 2,
+   "sentence": "Edit the existing entry Dock Server and set its URL to https://dock.example.net (keep its other fields)."
+  },
+  {
+   "id": "keepassxc_delete_entry",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 1,
+   "sentence": "Delete the entry named Old Router from the database (the other entries stay)."
+  },
+  {
+   "id": "keepassxc_enable_backup",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 1,
+   "sentence": "Open KeePassXC's application settings, turn on \"Backup database file before saving\", and confirm with OK."
+  },
+  {
+   "id": "keepassxc_group_entry_password",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 3,
+   "sentence": "Create a group named Berths, then add an entry inside that group with the title Slip 14, the username berth-14 and the password Tide!2026-Slip."
+  },
+  {
+   "id": "keepassxc_new_group",
+   "app": "keepassxc",
+   "tier": "good",
+   "atspi_recall_05": 0.648,
+   "difficulty": 2,
+   "sentence": "Create a new group named Marina Logins in the database."
+  },
+  {
+   "id": "lutris_add_game",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 2,
+   "sentence": "Add a locally installed game named Tide Quest that uses the Linux runner."
+  },
+  {
+   "id": "lutris_favorite_game",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 1,
+   "sentence": "Add the game \"Keep Game\" to the favorites (leave \"Old Game\" alone)."
+  },
+  {
+   "id": "lutris_hide_side_panel",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 1,
+   "sentence": "In Lutris, hide the side panel (the library sidebar on the left)."
+  },
+  {
+   "id": "lutris_hide_text",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 2,
+   "sentence": "Open Lutris Preferences and turn on \"Hide text under icons\"."
+  },
+  {
+   "id": "lutris_remove_game",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 2,
+   "sentence": "Remove the game \"Old Game\" from the Lutris library and keep \"Keep Game\"."
+  },
+  {
+   "id": "lutris_wine_game_favorite",
+   "app": "lutris",
+   "tier": "good",
+   "atspi_recall_05": 0.776,
+   "difficulty": 3,
+   "sentence": "Add a locally installed game named Harbor Run with the Wine runner and the release year 2019, then add it to the favorites."
+  },
+  {
+   "id": "obsidian_append_welcome",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 2,
+   "sentence": "Open the note Welcome and add a new last line: Visit the harbor office on 2026-11-20."
+  },
+  {
+   "id": "obsidian_logs_note",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 3,
+   "sentence": "Create a folder named Logs, create a note named Tide log inside that folder, and write two lines in it: Low tide at 06:40 and, on the next line, High tide at 19:05"
+  },
+  {
+   "id": "obsidian_new_folder",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 1,
+   "sentence": "Create a new folder named Logs in the vault."
+  },
+  {
+   "id": "obsidian_rename_note",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 2,
+   "sentence": "Rename the note Projects to Harbor Projects."
+  },
+  {
+   "id": "obsidian_tide_log",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 2,
+   "sentence": "Create a new note named Tide log and write the line: Low tide at 06:40"
+  },
+  {
+   "id": "obsidian_toggle_task",
+   "app": "obsidian",
+   "tier": "good",
+   "atspi_recall_05": 0.927,
+   "difficulty": 1,
+   "sentence": "In the note Projects, tick the unticked task \"write report\"."
+  },
+  {
+   "id": "okular_bookmark_current",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 1,
+   "sentence": "In Okular, add a bookmark to the page that is currently shown."
+  },
+  {
+   "id": "okular_bookmark_pages",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 2,
+   "sentence": "Add a bookmark to page 2 and another bookmark to page 3 of the document."
+  },
+  {
+   "id": "okular_facing_zoom",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 2,
+   "sentence": "Switch Okular's view mode to Facing Pages and set the zoom level to 200%."
+  },
+  {
+   "id": "okular_goto_page3",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 1,
+   "sentence": "In Okular, go to page 3 of the open PDF."
+  },
+  {
+   "id": "okular_note_bookmark_facing",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 3,
+   "sentence": "On page 3, add a Pop-up Note with the text Verify totals and bookmark that page; then switch the view mode to Facing Pages."
+  },
+  {
+   "id": "okular_popup_note",
+   "app": "okular",
+   "tier": "good",
+   "atspi_recall_05": 0.699,
+   "difficulty": 2,
+   "sentence": "On page 2, add a Pop-up Note whose text is: Check Q3 figures"
+  }
+ ]
+}

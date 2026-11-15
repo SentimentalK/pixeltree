@@ -1,0 +1,31 @@
+# R5: per-run overlay (omp --config), so the OMP agent loop is as close as possible to `claude -p` in R1.
+# Never written into the user's ~/.omp/agent/config.yml.
+tools:
+  intentTracing: false        # OMP otherwise adds an "i" (intent) argument to every tool schema
+  approvalMode: yolo          # the six bench MCP tools run without prompts (-p has no UI)
+retry:
+  modelFallback: false        # never switch to another model on errors (R5: no model change)
+  maxRetries: 2
+  waitForUsageReset: false
+compaction:
+  enabled: false
+  midTurnEnabled: false
+  asyncEnabled: false
+model:
+  loopGuard:
+    enabled: false
+  toolCallLoopGuard:
+    enabled: false
+features:
+  unexpectedStopDetection: none
+images:
+  describeForTextModels: false
+  autoResize: false
+memory:
+  backend: off
+autolearn:
+  enabled: false
+advisor:
+  enabled: false
+recap:
+  enabled: false
