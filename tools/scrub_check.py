@@ -65,7 +65,7 @@ AUTHOR_FILES = {"LICENSE", "NOTICE"}
 RULES = [
     ("home-path", True, r"/hom[e]/"),
     ("username", True, r"(?i)sentimenta[l]k"),
-    ("email", False, r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
+    ("email", False, r"(?<![A-Za-z0-9._%-])[A-Za-z0-9][A-Za-z0-9._%+-]*@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
     ("lifeos", True, r"Life[O]S"),
     ("ticket", False, r"PROJECT-\d+"),
     ("internal-id", False, r"\b(ctx|term|run|task|msg|wf)_[0-9a-f][0-9a-f-]{7,}"),

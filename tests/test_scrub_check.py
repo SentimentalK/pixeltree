@@ -196,3 +196,16 @@ def test_reserved_domain_addresses_are_allowed_but_normal_ones_hit(tmp_path):
     bad = ["jane" + "@" + "example.com.evil.io", "jane" + "@" + "notexample.com", "jane" + "@" + "gmail.com"]
     hits = _scan(tmp_path, "bad.txt", "\n".join(bad) + "\n")[0]
     assert [(h[1], h[2]) for h in hits] == [(1, "email"), (2, "email"), (3, "email")]
+
+
+def test_diff_marker_before_decorator_is_not_an_email(tmp_path):
+    import importlib.util, pathlib
+    spec = importlib.util.spec_from_file_location("scrub_check", pathlib.Path(__file__).resolve().parents[1] / "tools" / "scrub_check.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    rx = dict((name, pat) for name, _, pat in mod.RULES)["email"] if hasattr(mod, "RULES") else None
+    import re
+    assert rx is not None
+    assert re.search(rx, "+@pytest.mark.parametrize") is None
+    assert re.search(rx, "contact: jane.doe" + "@" + "corp.io") is not None
+    assert re.search(rx, "+jane.doe" + "@" + "corp.io") is not None  # an added line in a diff
