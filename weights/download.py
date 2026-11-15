@@ -66,6 +66,10 @@ def download(dest):
     except OSError as exc:
         part.unlink(missing_ok=True)
         print(f"download failed: {exc}", file=sys.stderr)
+        if "404" in str(exc):
+            print("If the repository is still private, download with an authenticated GitHub CLI instead:\n"
+                  "  gh release download v0.1.0 -R SentimentalK/pixeltree -p pixeltree-detector-v1.pt -D ~/.cache/pixeltree\n"
+                  "  python weights/download.py --check ~/.cache/pixeltree/pixeltree-detector-v1.pt", file=sys.stderr)
         return False
     if not check(part):
         part.unlink(missing_ok=True)

@@ -52,6 +52,8 @@ pip install -e ".[perceive,dev]"
 python weights/download.py                      # -> ~/.cache/pixeltree/pixeltree-detector-v1.pt, sha256-checked
 ```
 
+While the repository is private, anonymous downloads of the release asset return 404. Use the GitHub CLI while logged in instead: `gh release download v0.1.0 -R SentimentalK/pixeltree -p pixeltree-detector-v1.pt -D ~/.cache/pixeltree`, then `python weights/download.py --check ~/.cache/pixeltree/pixeltree-detector-v1.pt`.
+
 **1. Screenshot → tree**
 
 ```sh
