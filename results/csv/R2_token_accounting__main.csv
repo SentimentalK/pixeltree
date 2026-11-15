@@ -1,0 +1,6 @@
+Format,Tokens / step (pooled),Tokens / step from step 2,Episode mean tokens / step,Total observation tokens per episode,Characters / step
+F0 current,"2,156","2,182","2,122","27,340","3,661"
+F1 compact rows,823,835,818,"10,435","1,397"
+F2 = F1 + cleaning,604,612,594,"7,655","1,025"
+F3 = F2 + changes only,239,210,271,"3,036",406
+Screenshot (reference),"1,154","1,154","1,154","14,630 (12.7 steps × 1,154)",—

@@ -1,0 +1,4 @@
+Model,Hit as pixels,Hit only under 0–1000 reading,Miss under both,Cannot judge (no stated target)
+GLM,16,0,3,5
+DeepSeek,24,0,0,0
+Claude Haiku 5.5,19,0,3,2

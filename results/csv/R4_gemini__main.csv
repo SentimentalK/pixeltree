@@ -1,0 +1,4 @@
+Condition,Success,"R1 Haiku, same task (3 reps)",Steps,Model calls,Image views,Input / cache-read / output (thinking) tokens,Wall s
+S_shot,0 / 1,3 / 3,19,36,16,"114,617 / 819,223 / 32,697 (30,529)",375.0
+T_ours,1 / 1,0 / 3,6,7,0,"23,410 / 65,977 / 1,280 (957)",40.5
+H_ours,1 / 1,3 / 3,8,9,0,"29,946 / 110,979 / 1,272 (858)",37.1

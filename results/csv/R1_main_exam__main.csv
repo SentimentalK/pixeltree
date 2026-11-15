@@ -1,0 +1,8 @@
+Condition,What the agent sees,Success (95 % CI),v1 oracle,Mean steps,Observation tokens / step,$ / episode,$ / success,Wall s / episode (median)
+S_shot,screenshot 1280×720,"86 % [78, 94]",86 %,11.8,"1,246",0.0049,0.0057,24 (18)
+S_shot_strong,"screenshot, Sonnet 5.5","85 % [75, 94]",82 %,9.5,"1,172",0.0611,0.0721,20 (16)
+H_atspi,screenshot + AT-SPI tree,"84 % [74, 92]",84 %,11.5,"2,787",0.0095,0.0113,30 (20)
+H_ours,screenshot + our tree,"81 % [70, 90]",81 %,11.2,"3,217",0.0118,0.0146,45 (35)
+T_ours,our tree (text only),"57 % [44, 69]",57 %,13.4,"2,039",0.0083,0.0146,42 (39)
+T_atspi,AT-SPI tree (text only),"52 % [39, 65]",52 %,10.8,"2,147",0.0069,0.0133,24 (18)
+T_omni,OmniParser v2 tree (text only),"44 % [31, 56]",44 %,14.1,"1,415",0.0074,0.0170,51 (51)

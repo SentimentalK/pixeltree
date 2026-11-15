@@ -1,0 +1,7 @@
+Pair,Class-agnostic F1,Strict F1
+Opus final vs Sonnet,0.955,0.874
+Opus first round vs Sonnet,0.954,0.873
+Opus final vs Opus first round (how much QA changed),0.999,0.999
+A at 0.25 vs Opus,0.855,0.767
+A at 0.25 vs Sonnet,0.853,0.785
+A at 0.45 vs Opus / vs Sonnet,0.876 / 0.866,0.791 / 0.800

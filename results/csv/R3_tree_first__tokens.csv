@@ -1,0 +1,6 @@
+Condition,a (tokens / character),Observation characters per list step,List tokens per step (a × characters),R2 estimate,Tokens per image
+X1,0.667,739,493,F2 594 (0.589 × R2 characters),—
+X1_sonnet,0.618,—,—,—,—
+X2 full-list steps,0.681,987,672,—,"1,351 (look)"
+X2 changed-list steps,0.681,239,163,F3 271 (including the average of full first steps),—
+X2 all list steps,0.681,566,385,F3 271,—

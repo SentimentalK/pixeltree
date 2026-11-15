@@ -1,0 +1,5 @@
+Arm,Initialization,Training data
+A,"S50_s (yolo11s, initialized from our synthetic + web + GroundCUA base)","Opus train v1: 2,782 images (atspi118 980 / GroundCUA 1,637 / web121 165); internal validation 130"
+C,yolo11s COCO weights,Same as A
+B,S50_s,"Same as A + 2,912 images replayed from the v17 set (seed 0). GroundCUA rows train boxes only (`cls_mask`); their classes are unknown"
+Baseline,"S50_s, no fine-tuning",—

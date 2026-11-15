@@ -1,0 +1,6 @@
+Condition,Clicks inside a cleared-name box (successful / failed episodes),"Episodes that clicked the cleared ""×"" (close) button",Of which successful
+X1,32 / 330; 112 / 452,39 / 144,0
+X1_sonnet,25 / 161; 36 / 122,5 / 48,0
+X2,56 / 454; 51 / 269,8 / 144,0
+X2_lean,60 / 453; 58 / 234,6 / 144,0
+R1 T_ours (close button name kept),—,0 / 144,—

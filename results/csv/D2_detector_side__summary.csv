@@ -1,0 +1,8 @@
+Item,Question,Key numbers
+1,"Is 2,782 training images enough?",25 % 0.815 → 50 % 0.827 → 100 % 0.845 / 0.850
+2,Is A − C beyond seed variation?,Seed differences 0.005–0.006; A − C on exam_v1 +0.002 / +0.013 and on gold +0.011 / +0.015
+3,CV + OCR on the same exam set,0.623 (P 0.722 / R 0.548)
+4,Two post-processing rules,"Both together: exam_v1 P +0.043, R −0.016, F1 +0.018; gold F1 +0.004"
+5,Does A learn Opus's habits or does it see correctly?,Opus vs Sonnet 0.955; A vs Sonnet 0.853; A vs Opus 0.855
+6,Unseen environments,Dark theme −0.019; 1366×768 −0.024
+7,OmniParser v2 baseline,"exam_v1 0.586 (R 0.547), gold 0.614"

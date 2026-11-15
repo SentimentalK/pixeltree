@@ -1,0 +1,6 @@
+Model (shell),S_shot,T_ours,H_ours,T_atspi
+GLM 5.3 Flash,17/27 (63 %),18/27 (67 %),24/27 (89 %),–
+DeepSeek V4.1 Flash,19/27 (70 %),22/27 (81 %),21/27 (78 %),–
+LongCat 2.0 (no image input),–,19/27 (70 %),–,15/27 (56 %)
+Claude Haiku 5.5 (this shell),21/27 (78 %),15/27 (56 %),21/27 (78 %),–
+"*Claude Haiku 5.5 (R1 shell), same 27 tasks*",*83 %*,*49 %*,*75 %*,–

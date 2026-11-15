@@ -1,0 +1,7 @@
+Quantity,Value
+Clicks with a reference tree,336
+Clicks inside an element box before cleaning,329
+Clicks still inside a kept element box after cleaning,329 (100.0 %)
+Clicked element: name kept,225
+Clicked element: name cleared,42
+"Clicked element: removed as duplicate (a same-name containing element was kept, so the click stayed inside a box)",62

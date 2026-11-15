@@ -1,0 +1,8 @@
+Code,What the agent sees
+`S_shot`,Screenshot scaled to 1280×720
+`S_shot_strong`,"Screenshot scaled to 1280×720, Sonnet 5.5"
+`H_atspi`,Screenshot plus AT-SPI tree
+`H_ours`,Screenshot plus our tree
+`T_ours`,Our tree only (text)
+`T_atspi`,AT-SPI tree only (text)
+`T_omni`,OmniParser v2 tree only (text)

@@ -1,0 +1,7 @@
+Condition,Wall s,Model time,Observation time,of which tree computation,"of which screenshot, encoding and queueing",Actions (including 0.8 s settle),Other (claude start-up etc.)
+S_shot,21.8,11.0,0.59,—,0.59,5.58,4.7
+X1,25.0,11.1,3.61,2.81,0.79,5.97,4.3
+X2,26.0,11.8,3.21,2.44,0.62,6.41,4.6
+S_shot_lean,19.5,7.7,0.46,—,0.46,6.69,4.7
+X2_lean,24.6,10.7,2.74,2.06,0.47,6.14,5.1
+X1_sonnet,31.8,15.1,3.53,2.71,0.81,7.18,6.0

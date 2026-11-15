@@ -1,0 +1,4 @@
+Condition,Gemini success,Of which invalid,"R1 Haiku, same 5 tasks",Image views per episode,Successful episodes with zero image views
+S_shot,3 / 7,3,93 % (14 / 15),"16, 13, 8, 13, 17, 12, 16",0 / 3
+T_ours,5 / 5,0,27 % (4 / 15),0 × 5,5 / 5
+H_ours,5 / 5,0,67 % (10 / 15),"0, 0, 0, 0, 2",4 / 5

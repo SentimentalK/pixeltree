@@ -1,0 +1,12 @@
+Group,T_ours,T_atspi,T_omni,S_shot,S_shot_strong,H_ours,H_atspi
+drawing (good),50,39,17,83,83,78,83
+gitg (good),50,67,33,89,94,61,78
+keepassxc (good),72,89,78,100,100,100,100
+lutris (good),89,67,56,89,100,100,89
+obsidian (good),44,89,50,83,83,89,89
+okular (good),44,67,39,100,94,94,100
+gnome-calendar (poor),33,0,33,61,44,44,44
+gnome-contacts (poor),72,0,44,83,78,78,89
+difficulty 1 (16 tasks),77,75,75,98,96,92,98
+difficulty 2 (24 tasks),56,49,38,89,86,88,83
+difficulty 3 (8 tasks),21,17,0,54,58,37,58

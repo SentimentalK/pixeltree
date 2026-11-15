@@ -1,0 +1,5 @@
+Model,Episodes rerun,OK before,OK after,ok→ok,fail→ok,ok→fail,fail→fail
+DeepSeek,11,4,5,2,3,2,4
+LongCat,3,2,1,1,0,1,1
+Claude Haiku 5.5 (all),72,29,54,28,26,1,17
+"Claude Haiku 5.5, second rerun (episodes with a fallback in the first rerun)",11,4,3,–,–,–,–

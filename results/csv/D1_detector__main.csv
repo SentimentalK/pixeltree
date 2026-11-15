@@ -1,0 +1,5 @@
+Arm,"Exam_v1 atspi118 (258 images, 10 held-out Linux apps)","Exam_v1 web121 (45 images, 3 held-out sites)",Gold 119 (186 images: Linux 72 / macOS 114),"GroundCUA exam_v2 (8,255 images; original / shrunk labels)"
+A,0.854 / 0.874,0.787 / 0.813,0.815 / 0.826 (0.867 / 0.781 at conf 0.25),0.556 / 0.595 at conf 0.25
+C,0.848 / 0.868,0.809 / 0.830,0.805 / 0.811 (0.858 / 0.769),0.461 / 0.493
+B,0.854 / 0.839,0.753 / 0.744,0.791 / 0.769 (0.852 / 0.748),0.577 / 0.630
+"Baseline (S50_s, no fine-tuning)",0.489 / 0.212,0.549 / 0.510,0.444 / 0.171 (0.435 / 0.450),0.692 / 0.603

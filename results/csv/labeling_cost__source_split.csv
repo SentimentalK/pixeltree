@@ -1,0 +1,9 @@
+Source,Split,Images,Applications,Boxes,Boxes per image (mean),Text-line share,Excluded
+atspi118,train,1031,65,55621,53.95,30.7%,0
+atspi118,exam,258,17,15762,61.09,29.3%,0
+groundcua,train,1707,72,146139,85.61,24.0%,0
+web121,train,174,11,11915,68.48,30.6%,0
+web121,exam,45,3,2167,48.16,20.8%,0
+Total,train,2912,148,213675,73.38,26.1%,0
+Total,exam,303,20,17929,59.17,28.3%,0
+Total,all,3215,168,231604,72.04,26.3%,0

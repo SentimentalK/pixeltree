@@ -1,0 +1,5 @@
+Comparison,Difference (pts) [CI]
+X2 − X1,"+23.6 [+13.2, +34.0]"
+X1_sonnet − X1,"+19.4 [+6.9, +31.9]"
+X2_lean − X2,"+3.5 [−4.9, +11.8]"
+X2_lean − S_shot_lean,"−14.6 [−23.6, −6.9]"

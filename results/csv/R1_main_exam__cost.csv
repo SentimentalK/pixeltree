@@ -1,0 +1,9 @@
+Quantity,Value
+"Tree text, tokens per character (fit)",0.58–0.62
+"One 1280×720 screenshot, tokens (Haiku fit / Sonnet fit)","1,154 / 1,224"
+"Our tree, average per step","3,460 characters ≈ 2,040 tokens (1.6× one screenshot)"
+Model latency per step,0.8–1.4 s
+Observation time: screenshot / AT-SPI / our tree (CPU) / OmniParser (GPU),0.08 s / 0.33 s / 0.45 s / 1.6 s
+Median time to first tool call: `T_ours` and `H_ours` / other conditions,21.2 s / 9.2 s
+"Total API-equivalent spend, 1,008 graded episodes",$15.84
+Agent time,9.4 hours

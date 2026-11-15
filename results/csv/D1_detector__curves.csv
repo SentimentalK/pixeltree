@@ -1,0 +1,4 @@
+Arm,Epochs 10 / 20 / 30 / 40,Best epoch (value),Last − best,Reading
+A,0.534 / 0.608 / 0.642 / 0.646,35 (0.647),−0.001,Plateau after about 30 epochs
+C,0.417 / 0.551 / 0.589 / 0.614,40 (0.614),0,Still rising at 40 epochs
+B,0.518 / 0.578 / 0.603 / 0.611,33 (0.619),−0.008,"Plateau; the validation set uses the Opus convention, and the replay data pulls B down on it, as expected"

@@ -1,0 +1,7 @@
+Condition,What the agent sees,Coordinates,Tools,First view
+S_shot,Same as R1: 1280×720 screenshot and one line of instructions,"Screenshot pixels, × 1.5","observe, click, type, key, scroll, done",calls observe
+X1,"Cleaned F2 list from R2, full list at each step (for example `btn ""Save"" 1710,26`)",Screen pixels,the six tools,calls observe
+X2,"F3 from R2: observe returns a full list with IDs; after actions and hover only changes are sent (`+ id …`, `- id`, `~ id …`, or `no change`; full list if changes exceed 50 %)",1280×720 view (list center = screen / 1.5; same frame as look),"six tools + `hover(x,y)` + `look()`",calls observe
+X1_sonnet,"Same as X1, Claude Sonnet 5.5, one repetition per task",Screen pixels,six tools,calls observe
+S_shot_lean,Same as S_shot,Same as S_shot,five tools (no observe),first screenshot in the task message
+X2_lean,Same as X2,Same as X2,"no observe, no hover, no look",first full list in the task message

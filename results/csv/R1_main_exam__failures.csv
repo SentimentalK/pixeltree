@@ -1,0 +1,6 @@
+Condition,Missing element,Wrong or empty name,Bad coordinates,Agent reasoning,Task ambiguity,Harness / oracle
+T_ours,0,3,1,4,0,0
+T_atspi,4 (whole tree empty),2,0,2,0,0
+T_omni,2,2,1,3,0,0
+S_shot,—,—,0,8,0,0
+S_shot_strong,—,—,0,6,0,"2 (oracle bug, fixed in v1.1)"

@@ -1,0 +1,8 @@
+Billing path,Role,Calls,API-equivalent cost (USD)
+API,label,429,86.4831
+API,qa,33,2.3553
+API,fix,22,7.6591
+CLI sessions,label,3503,835.9178
+CLI sessions,qa,874,96.5023
+CLI sessions,fix,37,15.8273
+Total,–,4898,1044.7449
