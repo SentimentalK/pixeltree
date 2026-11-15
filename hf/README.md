@@ -69,6 +69,8 @@ model-index:
 
 A 19 MB YOLO11s detector that finds every visible UI element in a desktop or web screenshot and gives it one of 16 roles. Together with OCR (in the [pixeltree](https://github.com/SentimentalK/pixeltree) code) it turns a screenshot into a text list of elements — "the tree" — that a GUI agent can read.
 
+**Try it online: <https://pixeltree.mainstayx.com>** (upload a screenshot, get the boxes and the tree; nothing is stored).
+
 It is a research release. The accompanying [short paper](https://github.com/SentimentalK/pixeltree/blob/main/PAPER.md) explains which agents benefited from the tree and which did not.
 
 ## Example
@@ -189,6 +191,7 @@ AGPL-3.0. The model is a fine-tune of Ultralytics YOLO11 (AGPL-3.0), and the cod
 
 ## Links
 
+- Try it online: https://pixeltree.mainstayx.com
 - Code, testbench, replay viewer, result tables: https://github.com/SentimentalK/pixeltree
 - Short paper: [PAPER.md](https://github.com/SentimentalK/pixeltree/blob/main/PAPER.md), or as a PDF: [pixeltree-paper-v1.pdf](https://github.com/SentimentalK/pixeltree/releases/download/v0.1.0/pixeltree-paper-v1.pdf)
 - Model card in the repository: [weights/MODEL_CARD.md](https://github.com/SentimentalK/pixeltree/blob/main/weights/MODEL_CARD.md)

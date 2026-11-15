@@ -108,6 +108,8 @@ python hf/upload.py <你的HF用户名>/pixeltree-detector              # 新建
 
 **What's in the repo.** Code, weights (AGPL-3.0), the testbench, a replay viewer with example episodes, the labelling recipe and every result table. It's a research prototype, released so someone can take it further — especially icon meaning and control state. <GitHub link>
 
+**Try it online:** https://pixeltree.mainstayx.com (upload a screenshot, get the boxes and the element tree; nothing is stored).
+
 ### 3.2 r/LocalLLaMA（英文）
 
 **Title:** A 19 MB local screenshot-to-element-list model: Claude didn't need it, a text-only model could drive a desktop with it
@@ -123,6 +125,8 @@ python hf/upload.py <你的HF用户名>/pixeltree-detector              # 新建
 
 **What's there / what's missing.** Weights, code, testbench, replay viewer, result tables (AGPL-3.0). We have **not** tested a small local model as the reader — that's the obvious next experiment if you run local VLMs or text models. <GitHub link>
 
+**Try it online:** https://pixeltree.mainstayx.com (upload a screenshot, get the boxes and the element tree; nothing is stored).
+
 ### 3.3 中文版（例如即刻 / V2EX / 知乎，平台自选）
 
 **标题：** pixeltree：把"看屏幕"蒸馏成 19 MB 的本地小模型——以及哪些 AI 真的需要它
@@ -137,3 +141,6 @@ python hf/upload.py <你的HF用户名>/pixeltree-detector              # 新建
 - **我们自己的错。** 一条省 token 的清洗规则把关闭按钮的 "×" 清掉了，144 个回合里有 39 个 agent 直接关掉了应用。树的其它缺口：图标没有名字或被 OCR 成乱码、控件没有状态、同一元素重复出现。
 
 **仓库里有什么。** 代码、权重（AGPL-3.0）、测试台、带示例回合的回放查看器、标注配方和全部结果表。这是研究原型，放出来是希望有能力的团队接着做，尤其是图标含义和控件状态这两块。<GitHub 链接>
+
+
+**在线试用：** https://pixeltree.mainstayx.com （上传一张截图，看检测框和元素树；图片不保存）。

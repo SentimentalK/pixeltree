@@ -258,4 +258,6 @@ The labels used to train the detector were produced by Claude Opus, with Claude 
 
 ## 11. What is in this repository
 
+Try it online (upload a screenshot, get the tree): <https://pixeltree.mainstayx.com>.
+
 See [README.md](README.md) for the layout and quick start, [weights/MODEL_CARD.md](weights/MODEL_CARD.md) for the detector, and [DATA.md](DATA.md) for data sources and what is (not) redistributed.

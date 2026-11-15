@@ -12,6 +12,8 @@ We then measured, on 48 programmatically graded tasks in 8 unseen Linux apps, wh
 
 PDF of the paper: [pixeltree-paper-v1.pdf](https://github.com/SentimentalK/pixeltree/releases/download/v0.1.0/pixeltree-paper-v1.pdf).
 
+**Try it online: <https://pixeltree.mainstayx.com>** — upload a screenshot, get the boxes and the element tree (research prototype; images are processed in memory and not stored). The page's code is in [`demo/`](demo/).
+
 ## Findings in one page
 
 - **The detector.** YOLO11s fine-tuned on 2,782 screenshots labelled by Claude Opus (about $0.32 per image, API-equivalent). On 10 Linux apps never seen in training it finds elements at class-agnostic F1 **0.854**. Two independent model labellers agree at 0.955, so there is headroom ([results/D1](results/D1_detector.md), [D2](results/D2_detector_side.md)).

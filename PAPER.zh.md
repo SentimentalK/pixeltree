@@ -258,4 +258,6 @@ LongCat 2.0 无法接收图像。通过我们的树，它完成了 48 个任务�
 
 ## 11. 本仓库包含什么
 
+在线试用（上传截图，得到元素树）：<https://pixeltree.mainstayx.com>。
+
 布局与快速开始见 [README.md](README.md)，检测器见 [weights/MODEL_CARD.md](weights/MODEL_CARD.md)，数据来源及哪些内容未被再分发见 [DATA.md](DATA.md)。
