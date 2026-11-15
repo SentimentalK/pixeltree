@@ -28,6 +28,7 @@ bench = [
     "mss==10.2.0",
     "opencv-python-headless==5.0.0.93",
 ]
+hf = ["huggingface_hub>=1.0"]  # hf/upload.py (tested with 2.4.0)
 dev = ["pytest", "playwright"]
 
 [project.scripts]
@@ -40,5 +41,5 @@ include = ["pixeltree*"]
 "pixeltree.viewer" = ["assets/*"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests", "bench/tests"]
+testpaths = ["tests", "bench/tests", "hf"]
 pythonpath = ["."]
