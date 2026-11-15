@@ -15,7 +15,7 @@
 PANDOC=<pandoc 路径> TECTONIC=<tectonic 路径> paper/build.sh <输出目录>   # 默认输出 ./out/paper（不进 git）
 ```
 
-- 产物：`pixeltree.tex`、`refs.bib`、`pixeltree.bbl`、`pixeltree.pdf`。
+- 产物：`pixeltree.tex`、`refs.bib`、`pixeltree.bbl`、`pixeltree.pdf`（XeLaTeX 预览版）。
 - 构建后会自动运行 `paper/check.py`，检查三件事：页数；没有内容伸出页边（overfull hbox）；PAPER.md 里的每个数字都出现在 PDF 里。
 - PAPER.md 更新后（例如 R5 一节的数字）重跑一次即可，不手改 .tex。
 
@@ -24,37 +24,49 @@ PANDOC=<pandoc 路径> TECTONIC=<tectonic 路径> paper/build.sh <输出目录> 
 - 加单位或改署名：`PAPER_AUTHOR="Xinghan Xu（单位）" paper/build.sh`。
 - 单位、通讯邮箱、致谢都由你决定，脚本不替你填。
 
-**排版引擎。**
-- 本机用 XeLaTeX（tectonic）编译，模板里另有一条 pdfLaTeX 分支（CJKutf8 处理正文里引用的两个 OCR 汉字"业""目"）。**pdfLaTeX 分支没有在本机编译过。**
-- arXiv 默认用 pdfLaTeX 编译源文件；是否支持 XeLaTeX：未核实。
-- 建议投稿前在 Overleaf 上用 pdfLaTeX 编译一次，确认能过：上传 `pixeltree.tex`、`refs.bib`，菜单 → Compiler 选 pdfLaTeX。
-- 上传 arXiv 时把 `pixeltree.bbl` 一起放进去。arXiv 是否会自己跑 BibTeX：未核实；带上 .bbl 最稳。
+**排版引擎与 arXiv 源码包。**
+- arXiv 一般要 TeX 源文件，不收由 TeX 生成的 PDF：**上传的是源码包，不是 PDF。**
+- 源码包：`paper/make_arxiv_bundle.sh <build.sh 的输出目录>` 生成 `arxiv_bundle.zip`，内含：
+  - `pixeltree.tex`（第一行 `\pdfoutput=1`，让 arXiv 用 pdfLaTeX）；
+  - `pixeltree.bbl`（参考文献已排好，arXiv 不需要再跑 BibTeX）；
+  - `fvextra.sty`、`xurl.sty`。
 
-**Overleaf 编译（不想装工具时）。**
-- 上传 `pixeltree.tex` 与 `refs.bib`，Compiler 选 XeLaTeX 或 pdfLaTeX。
-- XeLaTeX 下会找 Noto Serif CJK SC 或 FandolSong 显示汉字、找 DejaVu Sans Mono 显示"√"。找不到时有退路（不显示汉字字形 / 用数学符号）。Overleaf 上有哪些字体：未核实。
+  不带任何字体：pdfLaTeX 下只用 TeX Live 自带字体。
+- **pdfLaTeX 已在本机验证。** 用 TinyTeX（TeX Live 2026，装在 git 外）对源码包编译两遍：无错误、无缺字、无未定义引用、无伸出页边。脚本带 `PDFLATEX=…` 时会自动做这一步。
+- **pdfLaTeX 下的特殊字符。**
+  - "业""目"：用 CJK 宏包的 Arphic gbsn 字体，在文档开头排进盒子再复用，代码块里也能显示。
+  - ×、→、≥：数学符号。
+  - √：抬高的数学根号。
+
+  PAPER.md 以后若出现新的汉字，要在 `paper/preamble.tex` 的 pdfLaTeX 分支加一行 `\pxcjkdef{高字节}{低字节}`，否则显示为 `[U+XXXX]`。
+- **本地预览与 arXiv 编出的 PDF。** `paper/build.sh` 用 XeLaTeX（tectonic）出一份本地预览 PDF。arXiv 编出来的会更接近 `arxiv_check/pixeltree.pdf`（pdfLaTeX 版，页数可能多一页）。
 
 **你需要自己做的事。**
-1. **账号。** 注册 arXiv 账号，填写真实姓名与单位。
+1. **账号。** 用个人邮箱注册 arXiv，单位填 Independent Researcher（如果你没有机构单位）。注册本身不需要背书。
 2. **类目。** 建议主类 cs.HC（人机交互），交叉列 cs.AI、cs.CV。理由：
    - 论文主题是 GUI agent 怎样"看"界面；
    - 结果包括检测器（CV）和 agent 实验（AI）。
 
    cs.CL 也可以考虑（文本模型读树）。最终由你决定。
-3. **背书（endorsement）。** 首次在某个类目投稿的作者可能需要一位已有该类目投稿记录的人背书。你是否需要、找谁：未核实（提交流程里会提示）。
-4. **许可证。**
+3. **背书（endorsement）是必须的**（arXiv 帮助页）：
+   - 首次向某个类目投稿前，必须先获得背书。
+   - 2026-01-21 起，仅有机构邮箱不再足够。
+   - 背书要由该类目一位有资格的作者，用你收到的六位背书码确认。
+   - 提交流程会给出背书码；你需要自己找一位在 cs.HC（或你选的主类）有投稿记录、且有背书资格的人。
+4. **没有背书人时的替代。**
+   - 先发 GitHub（公开）+ Hugging Face 模型页，arXiv 等找到背书人后再补。
+   - 若想要一个可引用的 DOI，可以考虑 Zenodo（与 GitHub 的集成方式、DOI 规则：未核实）。
+5. **许可证。**
    - arXiv 提交时要选论文本身的分发许可。常见选项有 arXiv 非独占分发许可和几种 CC 许可，例如 CC BY 4.0；具体列表以提交页为准，未核实。
    - 这只管论文 PDF / 源文件。代码与权重仍是 AGPL-3.0。
-5. **署名与相关工作。**
-   - `refs.bib` 里六篇的合作者写成 "others"，投稿前从 arXiv 摘要页补全作者列表。
-   - 标题与编号已逐条核对过。
-6. **公开顺序。**
-   - 论文里的链接都指向 GitHub 仓库；仓库还是 private 时，读者点进去是 404。
-   - 建议先把 GitHub 仓库改为 public，再投 arXiv。
-7. **提交记录里的身份。** git 提交记录显示的提交者名字 / 邮箱是本机 git 配置，与署名 Xinghan Xu 不同。是否改写由你决定；仓库公开前可以改写（公开后改写会影响已有克隆）。
-8. **日期相关的事实。**
+6. **参考文献。** `refs.bib` 六篇的完整作者、标题、年份已逐篇在 arXiv 摘要页核对。
+7. **先公开仓库，再投稿。**
+   - PDF 里有 64 处链接指向仓库里的文件（results/、examples/ 等），仓库还是 private 时读者点进去都是 404。
+   - 所以投 arXiv 之前，先把 GitHub 仓库改为 public。
+8. **提交记录里的身份。** git 提交记录显示的提交者名字 / 邮箱是本机 git 配置，与署名 Xinghan Xu 不同。是否改写由你决定；仓库公开前可以改写（公开后改写会影响已有克隆）。
+9. **日期相关的事实。**
    - 论文写明日历任务假定在 2026-11-08 到 2026-11-14 那一周运行。
-   - PAPER.md 以后再改数字时，先改 PAPER.md 与 results/，再重建 PDF，并同步改下面帖子里的数字。
+   - PAPER.md 以后再改数字时，先改 PAPER.md 与 results/，再重建 PDF 与源码包，并同步改下面帖子里的数字。
 
 ## 2. Hugging Face 模型页
 

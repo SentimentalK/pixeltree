@@ -10,14 +10,23 @@
   % CJK glyphs in the paper are OCR outputs quoted verbatim ("业", "目"); one CJK-capable font is enough.
   \IfFontExistsTF{Noto Serif CJK SC}{\newfontfamily\pxcjkfont{Noto Serif CJK SC}}{%
     \IfFontExistsTF{FandolSong-Regular.otf}{\newfontfamily\pxcjkfont{FandolSong-Regular.otf}}{\def\pxcjkfont{}}}
-  \newcommand{\pxcjk}[1]{{\pxcjkfont #1}}
+  % \pxcjk{code point} (emitted by filter.lua)
+  \newcommand{\pxcjk}[1]{{\pxcjkfont\symbol{"#1}}}
   % U+221A as a text glyph (the math radical hangs below the baseline)
   \IfFontExistsTF{DejaVu Sans Mono}{\newfontfamily\pxsymfont{DejaVu Sans Mono}%
-    \newcommand{\pxsurd}{{\pxsymfont\symbol{"221A}}}}{\newcommand{\pxsurd}{\raisebox{1.2ex}{\ensuremath{\surd}}}}
+    \newcommand{\pxsurd}{{\pxsymfont\symbol{"221A}}}}{\newcommand{\pxsurd}{\raisebox{0.5ex}{\ensuremath{\surd}}}}
 \else
   \usepackage{CJKutf8}
-  \newcommand{\pxcjk}[1]{\begin{CJK}{UTF8}{gbsn}#1\end{CJK}}
-  \newcommand{\pxsurd}{\raisebox{1.2ex}{\ensuremath{\surd}}}
+  % \pxcjk{code point}: the Arphic gbsn font through the CJK package (both part of TeX Live). The CJK environment
+  % cannot run inside verbatim, so each glyph is typeset once into a box at \begin{document} and reused.
+  % Add one \pxcjkdef{high byte}{low byte} line for every new CJK glyph in PAPER.md.
+  \newcommand{\pxcjkdef}[2]{\expandafter\newsavebox\csname pxcjkbox#1#2\endcsname
+    \AtBeginDocument{\global\expandafter\setbox\csname pxcjkbox#1#2\endcsname
+      \hbox{\begin{CJK}{UTF8}{gbsn}\CJKchar[UTF8]{"#1}{"#2}\end{CJK}}}}
+  \pxcjkdef{4E}{1A}% U+4E1A
+  \pxcjkdef{76}{EE}% U+76EE
+  \newcommand{\pxcjk}[1]{\ifcsname pxcjkbox#1\endcsname\expandafter\usebox\csname pxcjkbox#1\endcsname\else[U+#1]\fi}
+  \newcommand{\pxsurd}{\raisebox{0.5ex}{\ensuremath{\surd}}}
 \fi
 % U+221A as a text glyph: the math radical hangs below the baseline
 \renewcommand{\arraystretch}{1.15}

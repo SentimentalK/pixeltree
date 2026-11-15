@@ -19,6 +19,12 @@ local SYMBOLS = {
   ["√"] = "\\pxsurd{}", ["≥"] = "\\ensuremath{\\geq}",
 }
 
+-- CJK glyphs become \pxcjk{<code point>}; the preamble prints them with a CJK font (XeLaTeX) or the CJK package
+-- (pdfLaTeX, one \pxcjkdef line per glyph).
+local function cjk_macro(cp)
+  return string.format("\\pxcjk{%04X}", cp)
+end
+
 local function is_cjk(cp)
   return (cp >= 0x4E00 and cp <= 0x9FFF) or (cp >= 0x3400 and cp <= 0x4DBF)
 end
@@ -43,7 +49,7 @@ local function convert_text(s)
     if SYMBOLS[ch] then
       flush(); out[#out + 1] = pandoc.RawInline("latex", SYMBOLS[ch])
     elseif is_cjk(cp) then
-      flush(); out[#out + 1] = pandoc.RawInline("latex", "\\pxcjk{" .. ch .. "}")
+      flush(); out[#out + 1] = pandoc.RawInline("latex", cjk_macro(cp))
     else
       buf[#buf + 1] = ch
     end
@@ -58,7 +64,7 @@ local function convert_verbatim(s)
   for _, cp in utf8.codes(s) do
     local ch = utf8.char(cp)
     if SYMBOLS[ch] then parts[#parts + 1] = SYMBOLS[ch]
-    elseif is_cjk(cp) then parts[#parts + 1] = "\\pxcjk{" .. ch .. "}"
+    elseif is_cjk(cp) then parts[#parts + 1] = cjk_macro(cp)
     elseif ch == "\\" then parts[#parts + 1] = "\\textbackslash{}"
     elseif ch == "{" then parts[#parts + 1] = "\\{"
     elseif ch == "}" then parts[#parts + 1] = "\\}"
@@ -92,7 +98,7 @@ function Code(el)
   for _, cp in utf8.codes(t) do
     local ch = utf8.char(cp)
     if SYMBOLS[ch] then parts[#parts + 1] = SYMBOLS[ch]
-    elseif is_cjk(cp) then parts[#parts + 1] = "\\pxcjk{" .. ch .. "}"
+    elseif is_cjk(cp) then parts[#parts + 1] = cjk_macro(cp)
     else parts[#parts + 1] = latex_escape(ch) end
   end
   return pandoc.RawInline("latex", "\\texttt{" .. table.concat(parts) .. "}")
