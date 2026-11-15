@@ -209,3 +209,20 @@ def test_diff_marker_before_decorator_is_not_an_email(tmp_path):
     assert re.search(rx, "+@pytest.mark.parametrize") is None
     assert re.search(rx, "contact: jane.doe" + "@" + "corp.io") is not None
     assert re.search(rx, "+jane.doe" + "@" + "corp.io") is not None  # an added line in a diff
+
+
+def test_repo_slug_is_whitelisted_but_other_mentions_hit(tmp_path):
+    import re, importlib.util, pathlib
+    spec = importlib.util.spec_from_file_location("scrub_check2", pathlib.Path(__file__).resolve().parents[1] / "tools" / "scrub_check.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    ok = tmp_path / "a.md"
+    ok.write_text("gh release download v0.1.0 -R " + "Sentimental" + "K/pixeltree\n")
+    bad = tmp_path / "b.md"
+    bad.write_text("owner: " + "sentimental" + "k\n")
+    import subprocess, sys
+    script = pathlib.Path(__file__).resolve().parents[1] / "tools" / "scrub_check.py"
+    r_ok = subprocess.run([sys.executable, str(script), "--paths", str(ok)], capture_output=True, text=True)
+    r_bad = subprocess.run([sys.executable, str(script), "--paths", str(bad)], capture_output=True, text=True)
+    assert r_ok.returncode == 0, r_ok.stdout
+    assert r_bad.returncode == 1, r_bad.stdout

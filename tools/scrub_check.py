@@ -54,6 +54,7 @@ BINARY_EXTS = {".png", ".webp", ".jpg", ".jpeg", ".gif", ".ico", ".pdf", ".onnx"
 ARCHIVE_EXTS = (".tar.gz", ".tgz", ".zip")
 
 PROJECT_URL = "github.com/SentimentalK/pixeltree"
+PROJECT_SLUG = "SentimentalK/pixeltree"  # owner/repo as passed to `gh -R`; same public identifier as the URL
 EMAIL_ALLOWED_EXACT = {"noreply@github.com", "noreply@anthropic.com"}
 EMAIL_ALLOWED_SUFFIX = "users.noreply.github.com"
 # Reserved documentation / test domains (RFC 2606, RFC 6761) can never be real addresses.
@@ -106,7 +107,7 @@ def scan_line(line: str, in_author_file: bool = False) -> list[tuple[str, str]]:
         if name == "username":
             if in_author_file and "Copyright" in line:
                 continue
-            subject = line.replace(PROJECT_URL, "")
+            subject = line.replace(PROJECT_URL, "").replace(PROJECT_SLUG, "")
         for m in rx.finditer(subject):
             g = m.group(0)
             if name == "email" and email_allowed(g):
@@ -121,7 +122,7 @@ def scan_name(name: str) -> list[tuple[str, str]]:
 
 def scan_bytes(data: bytes) -> list[tuple[str, str]]:
     """Binary content: literal rules only, one hit per rule and kind of match."""
-    data = data.replace(PROJECT_URL.encode(), b"")
+    data = data.replace(PROJECT_URL.encode(), b"").replace(PROJECT_SLUG.encode(), b"")
     hits = []
     for name, rx in BYTE_RULES:
         seen = set()
