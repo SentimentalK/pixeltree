@@ -1,0 +1,24 @@
+% pixeltree paper: preamble added to pandoc's default LaTeX template (see build.sh).
+% Compiles with XeLaTeX (tectonic, used by build.sh) and with pdfLaTeX (arXiv's default engine; branch untested here).
+\usepackage{iftex}
+\usepackage{fvextra}            % breakable code blocks (filter.lua emits Verbatim)
+\usepackage{xurl}               % \path and URLs break anywhere
+\urlstyle{tt}
+\usepackage{microtype}
+\setlength{\emergencystretch}{3em}
+\ifXeTeX
+  % CJK glyphs in the paper are OCR outputs quoted verbatim ("业", "目"); one CJK-capable font is enough.
+  \IfFontExistsTF{Noto Serif CJK SC}{\newfontfamily\pxcjkfont{Noto Serif CJK SC}}{%
+    \IfFontExistsTF{FandolSong-Regular.otf}{\newfontfamily\pxcjkfont{FandolSong-Regular.otf}}{\def\pxcjkfont{}}}
+  \newcommand{\pxcjk}[1]{{\pxcjkfont #1}}
+  % U+221A as a text glyph (the math radical hangs below the baseline)
+  \IfFontExistsTF{DejaVu Sans Mono}{\newfontfamily\pxsymfont{DejaVu Sans Mono}%
+    \newcommand{\pxsurd}{{\pxsymfont\symbol{"221A}}}}{\newcommand{\pxsurd}{\raisebox{1.2ex}{\ensuremath{\surd}}}}
+\else
+  \usepackage{CJKutf8}
+  \newcommand{\pxcjk}[1]{\begin{CJK}{UTF8}{gbsn}#1\end{CJK}}
+  \newcommand{\pxsurd}{\raisebox{1.2ex}{\ensuremath{\surd}}}
+\fi
+% U+221A as a text glyph: the math radical hangs below the baseline
+\renewcommand{\arraystretch}{1.15}
+\setlength{\LTpre}{6pt}\setlength{\LTpost}{6pt}
