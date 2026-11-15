@@ -29,6 +29,7 @@ bench = [
     "opencv-python-headless==5.0.0.93",
 ]
 hf = ["huggingface_hub>=1.0"]  # hf/upload.py (tested with 2.4.0)
+demo = ["starlette>=0.40", "uvicorn>=0.30", "httpx>=0.27"]  # demo/ web service (httpx: TestClient)
 dev = ["pytest", "playwright"]
 
 [project.scripts]

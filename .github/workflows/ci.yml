@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install
-        run: pip install -e ".[dev,bench]"
+        run: pip install -e ".[dev,bench,demo]"
       - name: Tests
         run: python -m pytest -q
       - name: Scrub check

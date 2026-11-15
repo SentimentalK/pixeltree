@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pixeltree — screenshot → element tree</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+  <h1>pixeltree — screenshot → element tree</h1>
+  <p class="note">Research prototype. Your image is processed in memory and is not stored or logged.
+    Please do not upload screenshots that contain private information.</p>
+  <p class="note" lang="zh">研究原型：图片只在内存中处理，不保存、不记录；请勿上传含隐私的截图。</p>
+
+  <div class="controls">
+    <label class="btn" for="file">Choose a screenshot</label>
+    <input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+    <button id="example" type="button" class="btn">Use example</button>
+    <span class="hint">or drop an image anywhere on the page, or paste with Ctrl+V · PNG, JPEG or WebP, up to 8 MB</span>
+  </div>
+
+  <p id="status" role="status" aria-live="polite"></p>
+
+  <section id="result" hidden>
+    <div class="summary">
+      <span id="summary"></span>
+      <label class="check"><input id="show-boxes" type="checkbox" checked> Show boxes</label>
+    </div>
+    <div class="cols">
+      <div class="left">
+        <div id="stage"><img id="shot" alt="Uploaded screenshot"><div id="overlay"></div></div>
+        <div id="tip" hidden></div>
+        <ul id="legend"></ul>
+      </div>
+      <div class="right">
+        <div class="treehead"><strong>Element tree</strong> <button id="copy" type="button" class="btn small">Copy</button></div>
+        <pre id="tree"></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="limits">
+    <h2>Known limitations</h2>
+    <ol>
+      <li>Icon-only controls often get no name, or a garbled OCR name.</li>
+      <li>No control state (checked, selected, disabled, focused) is reported.</li>
+      <li>The same text can appear on two rows (duplicates).</li>
+    </ol>
+  </section>
+
+  <p class="links">
+    <a href="https://github.com/SentimentalK/pixeltree">GitHub</a> ·
+    <a href="https://github.com/SentimentalK/pixeltree/releases/download/v0.1.0/pixeltree-paper-v1.pdf">Paper (PDF)</a> ·
+    <a href="https://huggingface.co/SentimentalK/pixeltree-detector">Model on Hugging Face</a>
+  </p>
+  <footer>pixeltree is licensed under AGPL-3.0. Source code of this service:
+    <a href="https://github.com/SentimentalK/pixeltree">https://github.com/SentimentalK/pixeltree</a> (demo/).</footer>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
